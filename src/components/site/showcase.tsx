@@ -33,7 +33,7 @@ export function Showcase() {
   return (
     <section
       id="showcase"
-      className="relative scroll-mt-20 overflow-hidden bg-[oklch(0.16_0.02_280)] py-24 text-white sm:py-32"
+      className="relative scroll-mt-20 overflow-hidden bg-ink py-24 text-white sm:py-32"
     >
       {/* fond */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -109,7 +109,7 @@ function VideoPlayer() {
           <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <span className="relative flex size-20 items-center justify-center">
               <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-white/40" />
-              <span className="relative inline-flex size-20 items-center justify-center rounded-full bg-white text-[oklch(0.2_0.02_280)] shadow-xl transition-transform duration-300 group-hover:scale-105">
+              <span className="relative inline-flex size-20 items-center justify-center rounded-full bg-white text-ink shadow-xl transition-transform duration-300 group-hover:scale-105">
                 <Play className="size-8 translate-x-0.5 fill-current" />
               </span>
             </span>

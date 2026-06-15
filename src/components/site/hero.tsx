@@ -23,7 +23,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate overflow-hidden bg-[oklch(0.16_0.02_280)] text-white"
+      className="relative isolate overflow-hidden bg-ink text-white"
     >
       {/* ---------- Arrière-plan ---------- */}
       <HeroBackground hasVideo={Boolean(HERO_VIDEO_SRC)} />
@@ -130,7 +130,7 @@ function HeroBackground({ hasVideo }: { hasVideo: boolean }) {
       {/* Grille */}
       <div className="absolute inset-0 bg-grid opacity-[0.18] mask-fade-y" />
       {/* Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_30%,oklch(0.16_0.02_280)_85%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_30%,var(--ink)_85%)]" />
     </div>
   );
 }
@@ -149,7 +149,7 @@ function HeroVisual() {
       <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand-gradient opacity-30 blur-2xl" />
 
       {/* Carte navigateur / article */}
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.21_0.02_280)] shadow-2xl shadow-black/40 ring-1 ring-white/5">
+      <div className="overflow-hidden rounded-2xl border border-white/10 bg-ink-2 shadow-2xl shadow-black/40 ring-1 ring-white/5">
         {/* Barre de navigateur */}
         <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-3">
           <span className="size-2.5 rounded-full bg-red-400/70" />
@@ -164,7 +164,7 @@ function HeroVisual() {
         <div className="relative aspect-[16/8] bg-brand-gradient">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.25),transparent_55%)]" />
           <button className="group/play absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/30 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/45">
-            <span className="inline-flex size-6 items-center justify-center rounded-full bg-white text-[oklch(0.2_0.02_280)]">
+            <span className="inline-flex size-6 items-center justify-center rounded-full bg-white text-ink">
               <Play className="size-3 fill-current" />
             </span>
             Revoir la conférence
@@ -215,7 +215,7 @@ function HeroVisual() {
       <motion.div
         animate={reduce ? undefined : { y: [0, -10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-5 top-24 hidden items-center gap-2 rounded-xl border border-white/10 bg-[oklch(0.21_0.02_280)]/90 px-3 py-2 shadow-xl backdrop-blur sm:flex"
+        className="absolute -left-5 top-24 hidden items-center gap-2 rounded-xl border border-white/10 bg-ink-2/90 px-3 py-2 shadow-xl backdrop-blur sm:flex"
       >
         <FileText className="size-4 text-brand-accent" />
         <div className="text-[11px] leading-tight">
@@ -227,7 +227,7 @@ function HeroVisual() {
       <motion.div
         animate={reduce ? undefined : { y: [0, 12, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute -right-4 bottom-10 hidden items-center gap-2 rounded-xl border border-white/10 bg-[oklch(0.21_0.02_280)]/90 px-3 py-2 shadow-xl backdrop-blur sm:flex"
+        className="absolute -right-4 bottom-10 hidden items-center gap-2 rounded-xl border border-white/10 bg-ink-2/90 px-3 py-2 shadow-xl backdrop-blur sm:flex"
       >
         <Sparkles className="size-4 text-brand-accent" />
         <div className="text-[11px] leading-tight">

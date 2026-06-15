@@ -49,7 +49,7 @@ export function HowItWorks() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-strong">
             Comment ça marche
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -70,8 +70,8 @@ export function HowItWorks() {
               <StaggerItem key={s.step}>
                 <div className="relative flex flex-col items-start">
                   <div className="relative z-10 inline-flex size-24 items-center justify-center rounded-2xl border border-border bg-card shadow-sm">
-                    <s.icon className="size-9 text-brand" />
-                    <span className="absolute -right-2 -top-2 inline-flex size-7 items-center justify-center rounded-full bg-brand-gradient font-mono text-xs font-bold text-white shadow-md">
+                    <s.icon className="size-9 text-brand-strong" />
+                    <span className="absolute -right-2 -top-2 inline-flex size-7 items-center justify-center rounded-full bg-brand-gradient font-mono text-xs font-bold text-ink shadow-md">
                       {s.step}
                     </span>
                   </div>

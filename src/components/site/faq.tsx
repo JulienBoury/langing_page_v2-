@@ -33,7 +33,7 @@ export function Faq() {
     <section id="faq" className="scroll-mt-20 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-strong">
             FAQ
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
@@ -44,7 +44,7 @@ export function Faq() {
         <Reveal delay={0.05} className="mt-12 divide-y divide-border rounded-2xl border border-border bg-card">
           {faqs.map((item) => (
             <details key={item.q} className="group px-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left font-semibold tracking-tight transition-colors hover:text-brand [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left font-semibold tracking-tight transition-colors hover:text-brand-strong [&::-webkit-details-marker]:hidden">
                 {item.q}
                 <ChevronDown className="size-5 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-180" />
               </summary>

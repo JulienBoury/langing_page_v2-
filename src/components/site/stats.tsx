@@ -12,13 +12,16 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="relative overflow-hidden bg-brand-gradient py-16 text-white sm:py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.18),transparent_60%)]" />
+    <section className="relative overflow-hidden bg-ink py-16 text-white sm:py-20">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-1/2 size-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand opacity-[0.12] blur-[120px]" />
+        <div className="absolute inset-0 bg-grid opacity-[0.06] mask-fade-y" />
+      </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
+              <p className="font-heading text-4xl font-bold tracking-tight text-brand sm:text-5xl">
                 <CountUp to={s.to} suffix={s.suffix} />
               </p>
               <p className="mt-2 text-sm text-white/75 sm:text-base">

@@ -9,7 +9,7 @@ export function Cta() {
   return (
     <section
       id="contact"
-      className="relative isolate scroll-mt-20 overflow-hidden bg-[oklch(0.16_0.02_280)] py-24 text-white sm:py-32"
+      className="relative isolate scroll-mt-20 overflow-hidden bg-ink py-24 text-white sm:py-32"
     >
       {/* Aurora */}
       <div className="pointer-events-none absolute inset-0 -z-10">

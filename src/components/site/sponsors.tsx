@@ -30,7 +30,7 @@ export function Sponsors() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Texte */}
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wider text-brand">
+            <p className="text-sm font-semibold uppercase tracking-wider text-brand-strong">
               Pour les sponsors & l'industrie
             </p>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -45,7 +45,7 @@ export function Sponsors() {
             <ul className="mt-8 space-y-4">
               {benefits.map((b) => (
                 <li key={b.title} className="flex gap-3.5">
-                  <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand ring-1 ring-inset ring-brand/20">
+                  <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-strong ring-1 ring-inset ring-brand/20">
                     <Check className="size-3.5" />
                   </span>
                   <div>
@@ -79,7 +79,7 @@ export function Sponsors() {
                     <span className="text-gradient">Votre Marque</span>
                   </p>
                 </div>
-                <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand">
+                <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand-strong">
                   30 derniers jours
                 </span>
               </div>
@@ -105,7 +105,7 @@ export function Sponsors() {
                 </div>
                 <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
                   <span>Lectures / jour</span>
-                  <span className="inline-flex items-center gap-1 font-medium text-brand">
+                  <span className="inline-flex items-center gap-1 font-medium text-brand-strong">
                     <TrendingUp className="size-3.5" /> +186%
                   </span>
                 </div>
@@ -129,7 +129,7 @@ function MetricTile({
 }) {
   return (
     <div className="rounded-2xl border border-border bg-background p-4">
-      <Icon className="size-4 text-brand" />
+      <Icon className="size-4 text-brand-strong" />
       <p className="mt-2 font-heading text-xl font-bold tracking-tight">
         {value}
       </p>

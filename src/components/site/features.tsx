@@ -61,7 +61,7 @@ export function Features() {
     <section id="congres" className="relative scroll-mt-20 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-strong">
             Pour les congrès & sociétés savantes
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -90,7 +90,7 @@ function FeatureCard({ icon: Icon, title, description }: Feature) {
   return (
     <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5">
       <div className="pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-brand-gradient opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-10" />
-      <div className="inline-flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand ring-1 ring-inset ring-brand/15 transition-colors group-hover:bg-brand group-hover:text-white">
+      <div className="inline-flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand-strong ring-1 ring-inset ring-brand/15 transition-colors group-hover:bg-brand-strong group-hover:text-white">
         <Icon className="size-6" />
       </div>
       <h3 className="mt-5 text-lg font-semibold tracking-tight">{title}</h3>

@@ -8,11 +8,11 @@ const sizes = {
 
 const variants = {
   primary:
-    "bg-brand-gradient text-white shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/40 hover:-translate-y-0.5",
+    "bg-brand-gradient text-ink font-semibold shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/40 hover:-translate-y-0.5",
   outline:
     "border border-border bg-background/70 backdrop-blur text-foreground hover:bg-muted hover:-translate-y-0.5",
   light:
-    "bg-white text-[oklch(0.2_0.02_280)] shadow-lg shadow-black/10 hover:-translate-y-0.5 hover:shadow-xl",
+    "bg-white text-ink shadow-lg shadow-black/10 hover:-translate-y-0.5 hover:shadow-xl",
   glass:
     "border border-white/20 bg-white/5 text-white backdrop-blur hover:bg-white/10 hover:-translate-y-0.5",
   ghost: "text-foreground/80 hover:text-foreground hover:bg-muted/60",
