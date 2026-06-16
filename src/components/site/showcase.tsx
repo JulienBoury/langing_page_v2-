@@ -1,31 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { Play, Film, BarChartBig, BadgeCheck } from "lucide-react";
+import { Play, Headphones, Image as ImageIcon, BadgeCheck } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 
 /**
- * 👉 VIDÉO DE DÉMO
- * Déposez votre vidéo dans /public/videos/demo.mp4 (ou collez une URL),
- * puis renseignez le chemin ci-dessous pour activer le lecteur.
+ * 👉 VERSION AUDIO DE DÉMO (optionnel)
+ * Déposez un fichier audio dans /public/audio/demo.mp3 (ou collez une URL)
+ * et renseignez le chemin ci-dessous pour activer l'écoute. Vide = aperçu statique.
  */
-const DEMO_VIDEO_SRC = "";
+const DEMO_AUDIO_SRC = "";
 
 const highlights = [
   {
-    icon: Film,
-    title: "La conférence intégrée",
-    text: "La vidéo de l'intervention est encapsulée dans l'article, au bon endroit.",
+    icon: ImageIcon,
+    title: "Photos & diapos clés",
+    text: "Les visuels forts de l'intervention — photos et diapositives — intégrés au bon endroit.",
+  },
+  {
+    icon: Headphones,
+    title: "Quiz & version audio",
+    text: "Des quiz liés à l'article pour ancrer les connaissances, et une version audio à écouter partout.",
   },
   {
     icon: BadgeCheck,
     title: "Références vérifiées",
     text: "Chaque source est cliquable et croisée avec la littérature.",
-  },
-  {
-    icon: BarChartBig,
-    title: "Figures interactives",
-    text: "Graphiques et données reprennent vie, bien au-delà de la diapositive.",
   },
 ];
 
@@ -52,12 +52,12 @@ export function Showcase() {
           </h2>
           <p className="mt-5 text-pretty text-lg text-white/65">
             Pas un compte-rendu de plus : une expérience de lecture moderne, où
-            la vidéo, les données et la science se rencontrent.
+            les visuels, l'audio et la science se rencontrent.
           </p>
         </Reveal>
 
         <Reveal delay={0.1} className="mx-auto mt-14 max-w-4xl">
-          <VideoPlayer />
+          <ArticlePreview />
         </Reveal>
 
         <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
@@ -79,41 +79,44 @@ export function Showcase() {
   );
 }
 
-function VideoPlayer() {
+function ArticlePreview() {
   const [playing, setPlaying] = useState(false);
-  const hasVideo = Boolean(DEMO_VIDEO_SRC);
+  const hasAudio = Boolean(DEMO_AUDIO_SRC);
 
   return (
     <div className="group relative aspect-video overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10">
-      {playing && hasVideo ? (
-        <video
-          className="absolute inset-0 size-full object-cover"
-          src={DEMO_VIDEO_SRC}
-          controls
-          autoPlay
-          playsInline
-        />
-      ) : (
-        <button
-          type="button"
-          onClick={() => hasVideo && setPlaying(true)}
-          className="absolute inset-0 size-full cursor-pointer"
-          aria-label="Lire la vidéo de démonstration"
-        >
-          {/* Poster (dégradé + UI factice) */}
-          <div className="absolute inset-0 bg-brand-gradient" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.22),transparent_55%)]" />
-          <div className="absolute inset-0 bg-black/25" />
+      {/* Poster (visuel d'article) */}
+      <div className="absolute inset-0 bg-brand-gradient" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.22),transparent_55%)]" />
+      <div className="absolute inset-0 bg-black/30" />
 
-          {/* Bouton play */}
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      {/* Pill version audio */}
+      <span className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-black/35 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
+        <Headphones className="size-3.5" />
+        Version audio · multilingue
+      </span>
+
+      {playing && hasAudio ? (
+        <div className="absolute inset-x-6 bottom-6">
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+          <audio className="w-full" src={DEMO_AUDIO_SRC} controls autoPlay />
+        </div>
+      ) : (
+        <>
+          {/* Bouton écouter */}
+          <button
+            type="button"
+            onClick={() => hasAudio && setPlaying(true)}
+            aria-label="Écouter la version audio de l'article"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+          >
             <span className="relative flex size-20 items-center justify-center">
               <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-white/40" />
               <span className="relative inline-flex size-20 items-center justify-center rounded-full bg-white text-ink shadow-xl transition-transform duration-300 group-hover:scale-105">
                 <Play className="size-8 translate-x-0.5 fill-current" />
               </span>
             </span>
-          </span>
+          </button>
 
           {/* Bas de cadre */}
           <span className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-left">
@@ -121,15 +124,15 @@ function VideoPlayer() {
               <span className="block text-sm font-semibold sm:text-base">
                 Aligneurs et contrôle de l'ancrage
               </span>
-              <span className="block text-xs text-white/70 sm:text-sm">
-                Dr. Camille Laurent · Congrès SFODF 2026
+              <span className="block text-xs text-white/75 sm:text-sm">
+                Dr. Camille Laurent · Congrès SFODF
               </span>
             </span>
             <span className="rounded-md bg-black/40 px-2 py-1 font-mono text-xs text-white/90 backdrop-blur">
-              18:24
+              8:24
             </span>
           </span>
-        </button>
+        </>
       )}
     </div>
   );

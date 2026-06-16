@@ -3,19 +3,14 @@
 import { motion, useReducedMotion } from "motion/react";
 import {
   ArrowRight,
-  Play,
+  Eye,
+  Headphones,
   BadgeCheck,
   Sparkles,
+  Languages,
   FileText,
 } from "lucide-react";
 import { CtaLink } from "./cta-button";
-
-/**
- * 👉 VIDÉO DU HERO
- * Déposez votre vidéo dans /public/videos/hero.mp4 puis renseignez le chemin
- * ci-dessous. Tant que c'est vide, un fond dégradé animé est utilisé.
- */
-const HERO_VIDEO_SRC = "";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -26,7 +21,7 @@ export function Hero() {
       className="relative isolate overflow-hidden bg-ink text-white"
     >
       {/* ---------- Arrière-plan ---------- */}
-      <HeroBackground hasVideo={Boolean(HERO_VIDEO_SRC)} />
+      <HeroBackground />
 
       {/* ---------- Contenu ---------- */}
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-24 pt-32 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-32 lg:pt-40 lg:px-8">
@@ -62,9 +57,10 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.14 }}
             className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/70"
           >
-            AgoraLive capte les présentations de vos congrès et les transforme
-            en articles interactifs, vérifiés par la littérature et lus par
-            votre communauté — bien après la fin de l'événement.
+            Notre équipe capte les conférences de vos congrès et les transforme
+            en articles scientifiques web : interactifs, vérifiés par la
+            littérature, traduits dans toutes les langues et disponibles en
+            version audio.
           </motion.p>
 
           <motion.div
@@ -78,7 +74,7 @@ export function Hero() {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </CtaLink>
             <CtaLink href="#showcase" variant="glass" size="lg">
-              <Play className="size-4" />
+              <Eye className="size-4" />
               Voir un exemple
             </CtaLink>
           </motion.div>
@@ -87,11 +83,15 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.34 }}
-            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/55"
+            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70"
           >
             <span className="inline-flex items-center gap-2">
               <BadgeCheck className="size-4 text-brand-accent" />
               Vérifié par la littérature (PubMed)
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <Languages className="size-4 text-brand-accent" />
+              Traduit & version audio
             </span>
             <span className="inline-flex items-center gap-2">
               <Sparkles className="size-4 text-brand-accent" />
@@ -110,19 +110,9 @@ export function Hero() {
   );
 }
 
-function HeroBackground({ hasVideo }: { hasVideo: boolean }) {
+function HeroBackground() {
   return (
     <div className="absolute inset-0 -z-10">
-      {hasVideo && (
-        <video
-          className="absolute inset-0 size-full object-cover opacity-40"
-          src={HERO_VIDEO_SRC}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-      )}
       {/* Blobs aurora */}
       <div className="absolute -left-40 -top-40 size-[42rem] rounded-full bg-brand opacity-30 blur-[120px] animate-aurora" />
       <div className="absolute -right-40 top-10 size-[38rem] rounded-full bg-brand-2 opacity-25 blur-[120px] animate-aurora [animation-delay:-6s]" />
@@ -160,24 +150,24 @@ function HeroVisual() {
           </div>
         </div>
 
-        {/* Cover avec play */}
+        {/* Visuel d'article (photo / diapo) avec écoute */}
         <div className="relative aspect-[16/8] bg-brand-gradient">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.25),transparent_55%)]" />
           <button className="group/play absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/30 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/45">
             <span className="inline-flex size-6 items-center justify-center rounded-full bg-white text-ink">
-              <Play className="size-3 fill-current" />
+              <Headphones className="size-3" />
             </span>
-            Revoir la conférence
+            Écouter l'article
           </button>
           <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-black/30 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur">
-            <span className="size-1.5 rounded-full bg-red-400" />
-            Congrès SFODF 2026
+            <span className="size-1.5 rounded-full bg-brand-accent" />
+            Congrès SFODF
           </span>
         </div>
 
         {/* Corps de l'article */}
         <div className="space-y-4 p-5">
-          <div className="flex items-center gap-2 text-[11px] text-white/45">
+          <div className="flex items-center gap-2 text-[11px] text-white/65">
             <span className="inline-flex items-center gap-1 rounded-full bg-brand-accent/15 px-2 py-0.5 font-medium text-brand-accent">
               <BadgeCheck className="size-3" /> Vérifié
             </span>
@@ -188,8 +178,8 @@ function HeroVisual() {
           </h3>
           <div className="flex items-center gap-2.5">
             <span className="size-7 rounded-full bg-brand-gradient" />
-            <div className="text-[11px] leading-tight text-white/50">
-              <p className="font-medium text-white/70">Dr. Camille Laurent</p>
+            <div className="text-[11px] leading-tight text-white/65">
+              <p className="font-medium text-white/80">Dr. Camille Laurent</p>
               <p>Orthodontiste · CHU de Lyon</p>
             </div>
           </div>
@@ -198,15 +188,17 @@ function HeroVisual() {
             <div className="h-2 w-[92%] rounded-full bg-white/10" />
             <div className="h-2 w-[78%] rounded-full bg-white/10" />
           </div>
-          {/* Mini graphique */}
-          <div className="flex items-end gap-2 rounded-xl border border-white/10 bg-white/[0.02] p-3">
-            {[40, 68, 52, 84, 60, 72].map((h, i) => (
-              <div
-                key={i}
-                className="flex-1 rounded-t bg-gradient-to-t from-brand to-brand-accent"
-                style={{ height: `${h}%` }}
-              />
-            ))}
+          {/* Quiz en lien avec l'article */}
+          <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3">
+            <div className="flex items-center gap-2 text-[11px] text-white/70">
+              <span className="inline-flex size-6 items-center justify-center rounded-lg bg-brand-accent/15 text-brand-accent">
+                <BadgeCheck className="size-3.5" />
+              </span>
+              Quiz · 5 questions
+            </div>
+            <span className="rounded-md bg-brand-accent/15 px-2 py-0.5 text-[10px] font-medium text-brand-accent">
+              Commencer
+            </span>
           </div>
         </div>
       </div>
@@ -220,7 +212,7 @@ function HeroVisual() {
         <FileText className="size-4 text-brand-accent" />
         <div className="text-[11px] leading-tight">
           <p className="font-semibold text-white">12 références</p>
-          <p className="text-white/45">croisées PubMed</p>
+          <p className="text-white/65">croisées PubMed</p>
         </div>
       </motion.div>
 
@@ -229,10 +221,10 @@ function HeroVisual() {
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className="absolute -right-4 bottom-10 hidden items-center gap-2 rounded-xl border border-white/10 bg-ink-2/90 px-3 py-2 shadow-xl backdrop-blur sm:flex"
       >
-        <Sparkles className="size-4 text-brand-accent" />
+        <Headphones className="size-4 text-brand-accent" />
         <div className="text-[11px] leading-tight">
-          <p className="font-semibold text-white">1 240 lectures</p>
-          <p className="text-white/45">cette semaine</p>
+          <p className="font-semibold text-white">Version audio</p>
+          <p className="text-white/65">8 min d'écoute</p>
         </div>
       </motion.div>
     </motion.div>

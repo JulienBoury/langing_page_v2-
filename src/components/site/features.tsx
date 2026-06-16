@@ -1,11 +1,11 @@
 "use client";
 
 import {
-  Mic,
+  Camera,
   Wand2,
   ShieldCheck,
   MousePointerClick,
-  Palette,
+  Headphones,
   BarChart3,
   type LucideIcon,
 } from "lucide-react";
@@ -19,16 +19,16 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    icon: Mic,
-    title: "Captation sans friction",
+    icon: Camera,
+    title: "Captation clé en main",
     description:
-      "Vous nous transmettez l'enregistrement de la session. On s'occupe de tout le reste — aucune charge supplémentaire pour vos intervenants.",
+      "Notre équipe se déplace sur votre congrès et capte les sessions. Vous ne préparez rien : on s'occupe de tout, de bout en bout.",
   },
   {
     icon: Wand2,
     title: "Rédaction scientifique assistée",
     description:
-      "Notre moteur transforme la transcription en véritable article structuré, relu par des experts. Pas une transcription brute : un contenu publiable.",
+      "Notre moteur transforme la captation en véritable article structuré, relu par des experts. Pas une transcription brute : un contenu publiable.",
   },
   {
     icon: ShieldCheck,
@@ -40,13 +40,13 @@ const features: Feature[] = [
     icon: MousePointerClick,
     title: "Articles web interactifs",
     description:
-      "Figures, graphiques, et vidéo de la conférence intégrée. Une expérience de lecture vivante — à l'opposé d'un PDF figé que personne n'ouvre.",
+      "Photos et diapositives clés des intervenants, et des quiz en lien avec l'article pour ancrer les connaissances. Loin du PDF figé que personne n'ouvre.",
   },
   {
-    icon: Palette,
-    title: "Aux couleurs de votre congrès",
+    icon: Headphones,
+    title: "Audio & multilingue",
     description:
-      "La charte de votre société savante (ou de votre sponsor) est appliquée automatiquement. Vos contenus restent votre marque.",
+      "Chaque article est aussi publié en version audio et traduit dans toutes les langues — pour une audience plus large, partout.",
   },
   {
     icon: BarChart3,

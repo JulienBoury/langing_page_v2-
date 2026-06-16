@@ -1,15 +1,11 @@
 import { Activity } from "lucide-react";
 
-// Placeholders — remplace par les vraies sociétés savantes / congrès partenaires.
+// Congrès & partenaires ayant déjà valorisé leurs contenus avec AgoraLive.
 const partners = [
+  "Top Ortho",
+  "Dental Monitoring",
   "SFODF",
-  "Société Fr. de Cardiologie",
-  "SF Dermatologie",
-  "CNGOF",
-  "SFAR",
-  "SF Rhumatologie",
-  "SPILF",
-  "SF Endocrinologie",
+  "SFOPA",
 ];
 
 export function TrustedBy() {

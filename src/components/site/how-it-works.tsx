@@ -1,6 +1,6 @@
 "use client";
 
-import { Upload, FileSearch, CheckCircle2, Rocket, type LucideIcon } from "lucide-react";
+import { Camera, FileSearch, CheckCircle2, Rocket, type LucideIcon } from "lucide-react";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 
 type Step = {
@@ -12,11 +12,11 @@ type Step = {
 
 const steps: Step[] = [
   {
-    icon: Upload,
+    icon: Camera,
     step: "01",
-    title: "Vous transmettez",
+    title: "On capte",
     description:
-      "L'enregistrement de la conférence nous suffit. Audio ou vidéo, en présentiel ou en distanciel.",
+      "Notre équipe se déplace sur votre congrès et capte les sessions — audio et visuels des intervenants. Vous n'avez rien à préparer.",
   },
   {
     icon: FileSearch,
@@ -37,7 +37,7 @@ const steps: Step[] = [
     step: "04",
     title: "On publie & on diffuse",
     description:
-      "L'article part en ligne, est diffusé à votre communauté, et son audience est mesurée en temps réel.",
+      "L'article part en ligne — traduit dans toutes les langues et en version audio — diffusé à votre communauté, audience mesurée en temps réel.",
   },
 ];
 

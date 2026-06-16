@@ -4,10 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 // Chiffres placeholder — à remplacer par vos vraies métriques.
 const stats = [
-  { to: 120, suffix: "+", label: "Conférences valorisées" },
-  { to: 50000, suffix: "+", label: "Professionnels de santé touchés" },
-  { to: 85, suffix: " %", label: "Taux de complétion de lecture" },
-  { to: 12, suffix: "", label: "Sociétés savantes partenaires" },
+  { to: 60, suffix: "", label: "Conférences valorisées" },
+  { to: 1500, suffix: "", label: "Professionnels de santé touchés" },
+  { to: 1, suffix: "", label: "Société savante partenaire" },
 ];
 
 export function Stats() {
@@ -18,7 +17,7 @@ export function Stats() {
         <div className="absolute inset-0 bg-grid opacity-[0.06] mask-fade-y" />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
               <p className="font-heading text-4xl font-bold tracking-tight text-brand sm:text-5xl">

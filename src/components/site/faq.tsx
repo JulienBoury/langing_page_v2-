@@ -15,6 +15,10 @@ const faqs = [
     a: "Chaque affirmation clé est croisée avec la littérature (PubMed) et accompagnée de ses références, cliquables et vérifiables. La vérification des sources est au cœur de notre processus, pas une option.",
   },
   {
+    q: "Proposez-vous l'audio et d'autres langues ?",
+    a: "Oui. Chaque article est aussi publié en version audio, à écouter en déplacement, et traduit dans toutes les langues pour toucher une audience internationale — sans effort supplémentaire de votre part.",
+  },
+  {
     q: "À qui appartiennent les contenus produits ?",
     a: "À vous. La société savante ou l'organisateur du congrès reste propriétaire de ses contenus. AgoraLive est l'outil qui les valorise, pas le détenteur de votre savoir.",
   },
