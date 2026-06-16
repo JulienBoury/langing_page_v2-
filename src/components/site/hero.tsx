@@ -61,7 +61,7 @@ export function Hero() {
             Notre équipe capte les conférences de vos congrès et les transforme
             en articles scientifiques : interactifs, traduits dans toutes les
             langues et disponibles en version audio, diffusés à tous vos
-            congressistes.
+            congressistes en direct.
           </motion.p>
 
           <motion.div

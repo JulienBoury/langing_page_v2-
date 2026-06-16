@@ -10,6 +10,8 @@ type RevealProps = {
   delay?: number;
   /** Décalage vertical initial. */
   y?: number;
+  /** Si `true`, l'animation ne joue qu'une fois. Par défaut elle se rejoue
+   *  à chaque fois que le bloc revient dans le champ de vision. */
   once?: boolean;
 };
 
@@ -22,7 +24,7 @@ export function Reveal({
   className,
   delay = 0,
   y = 22,
-  once = true,
+  once = false,
 }: RevealProps) {
   const reduce = useReducedMotion();
 
@@ -63,7 +65,7 @@ export function StaggerGroup({
       variants={variants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-80px" }}
     >
       {children}
     </motion.div>
