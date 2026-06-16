@@ -15,8 +15,8 @@ const faqs = [
     a: "Chaque affirmation clé est croisée avec la littérature (PubMed) et accompagnée de ses références, cliquables et vérifiables. La vérification des sources est au cœur de notre processus, pas une option.",
   },
   {
-    q: "Proposez-vous l'audio et d'autres langues ?",
-    a: "Oui. Chaque article est aussi publié en version audio, à écouter en déplacement, et traduit dans toutes les langues pour toucher une audience internationale — sans effort supplémentaire de votre part.",
+    q: "Proposez-vous une traduction des articles dans d'autres langues ?",
+    a: "Oui. Chaque article est aussi publié et traduit dans toutes les langues pour toucher une audience internationale, sans effort supplémentaire de votre part.",
   },
   {
     q: "À qui appartiennent les contenus produits ?",
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Combien de temps entre la conférence et la publication ?",
-    a: "Comptez quelques jours ouvrés, le temps de la rédaction, de la vérification et de la validation par l'intervenant — bien plus rapide qu'une publication classique.",
+    a: "Comptez quelques heures, le temps de la rédaction, de la vérification et de la validation par l'intervenant : bien plus rapide qu'une publication classique.",
   },
   {
     q: "Est-ce conforme au RGPD ?",

@@ -46,7 +46,7 @@ const features: Feature[] = [
     icon: Headphones,
     title: "Audio & multilingue",
     description:
-      "Chaque article est aussi publié en version audio et traduit dans toutes les langues — pour une audience plus large, partout.",
+      "Chaque article est aussi publié en version audio et traduit dans toutes les langues, pour une audience plus large, partout.",
   },
   {
     icon: BarChart3,
@@ -65,8 +65,8 @@ export function Features() {
             Pour les congrès & sociétés savantes
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Le savoir de vos congrès ne devrait pas s'éteindre à la dernière
-            session.
+            Le savoir de vos congrès ne devrait pas s'arrêter à la dernière
+            diapo.
           </h2>
           <p className="mt-5 text-pretty text-lg text-muted-foreground">
             AgoraLive prolonge la vie de vos conférences et en fait un capital

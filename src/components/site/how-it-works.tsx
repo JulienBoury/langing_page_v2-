@@ -16,7 +16,7 @@ const steps: Step[] = [
     step: "01",
     title: "On capte",
     description:
-      "Notre équipe se déplace sur votre congrès et capte les sessions — audio et visuels des intervenants. Vous n'avez rien à préparer.",
+      "Notre équipe se déplace sur votre congrès et capte les sessions, audio et visuels des intervenants. Vous n'avez rien à préparer.",
   },
   {
     icon: FileSearch,
@@ -37,7 +37,7 @@ const steps: Step[] = [
     step: "04",
     title: "On publie & on diffuse",
     description:
-      "L'article part en ligne — traduit dans toutes les langues et en version audio — diffusé à votre communauté, audience mesurée en temps réel.",
+      "L'article part en ligne, traduit dans toutes les langues et en version audio, diffusé à votre communauté, audience mesurée en temps réel.",
   },
 ];
 

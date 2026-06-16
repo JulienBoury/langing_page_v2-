@@ -47,8 +47,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.06 }}
             className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
           >
-            Vos conférences de congrès,{" "}
-            <span className="text-gradient">transformées en articles scientifiques web.</span>
+            Vos conférences de congrès{" "}
+            <span className="text-gradient">transformées en articles scientifiques</span>
+            , vos <span className="text-gradient">sponsors valorisés.</span>
           </motion.h1>
 
           <motion.p
@@ -58,9 +59,9 @@ export function Hero() {
             className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/70"
           >
             Notre équipe capte les conférences de vos congrès et les transforme
-            en articles scientifiques web : interactifs, vérifiés par la
-            littérature, traduits dans toutes les langues et disponibles en
-            version audio.
+            en articles scientifiques : interactifs, traduits dans toutes les
+            langues et disponibles en version audio, diffusés à tous vos
+            congressistes.
           </motion.p>
 
           <motion.div
@@ -179,8 +180,8 @@ function HeroVisual() {
           <div className="flex items-center gap-2.5">
             <span className="size-7 rounded-full bg-brand-gradient" />
             <div className="text-[11px] leading-tight text-white/65">
-              <p className="font-medium text-white/80">Dr. Camille Laurent</p>
-              <p>Orthodontiste · CHU de Lyon</p>
+              <p className="font-medium text-white/80">Dr. Camille</p>
+              <p>Orthodontiste · CHU de Paris</p>
             </div>
           </div>
           <div className="space-y-2 pt-1">
