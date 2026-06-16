@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "AgoraLive",
   tagline:
-    "Vos congrès, transformés en articles scientifiques web — interactifs, vérifiés, traduits et disponibles en audio.",
+    "Vos congrès, transformés en articles scientifiques interactifs, vérifiés, traduits et disponibles en audio.",
   email: "contact@agoralive.fr",
   nav: [
     { label: "Comment ça marche", href: "#process" },
@@ -11,7 +11,7 @@ export const siteConfig = {
     { label: "FAQ", href: "#faq" },
   ],
   cta: {
-    primary: { label: "Demander une démo", href: "#contact" },
+    primary: { label: "Demander un devis", href: "#contact" },
     secondary: { label: "Voir un exemple", href: "#showcase" },
   },
 } as const;

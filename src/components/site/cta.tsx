@@ -30,7 +30,7 @@ export function Cta() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <CtaLink href={`mailto:${siteConfig.email}`} variant="light" size="lg">
-              Demander une démo
+              Demander un devis
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </CtaLink>
             <CtaLink
@@ -44,8 +44,7 @@ export function Cta() {
           </div>
 
           <p className="mt-6 text-sm text-white/65">
-            Démo personnalisée · Réponse sous 24 h · Conçu pour les sociétés
-            savantes
+            Démo personnalisée · Réponse sous 24 h · Conçu pour tous les congrès
           </p>
         </Reveal>
       </div>

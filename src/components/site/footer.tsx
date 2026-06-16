@@ -2,87 +2,32 @@ import { Mail } from "lucide-react";
 import { Logo } from "./logo";
 import { siteConfig } from "@/lib/site";
 
-const columns = [
-  {
-    title: "Plateforme",
-    links: [
-      { label: "Comment ça marche", href: "#process" },
-      { label: "Pour les congrès", href: "#congres" },
-      { label: "Pour les sponsors", href: "#sponsors" },
-      { label: "Exemples d'articles", href: "#showcase" },
-    ],
-  },
-  {
-    title: "Ressources",
-    links: [
-      { label: "FAQ", href: "#faq" },
-      { label: "Le blog AgoraLive", href: "#" },
-      { label: "Études de cas", href: "#" },
-      { label: "Demander une démo", href: "#contact" },
-    ],
-  },
-  {
-    title: "Société",
-    links: [
-      { label: "Mentions légales", href: "#" },
-      { label: "Confidentialité (RGPD)", href: "#" },
-      { label: "CGU", href: "#" },
-      { label: "Contact", href: "#contact" },
-    ],
-  },
-];
-
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-white">
       <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-brand-gradient opacity-20 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
-          <div className="max-w-sm">
-            <Logo className="text-white" />
-            <p className="mt-5 text-sm leading-relaxed text-white/60">
-              {siteConfig.tagline}
-            </p>
-            <div className="mt-6 flex items-center gap-3">
-              <SocialLink href="#" label="LinkedIn">
-                <IconLinkedin className="size-[18px]" />
-              </SocialLink>
-              <SocialLink href="#" label="YouTube">
-                <IconYoutube className="size-[18px]" />
-              </SocialLink>
-              <SocialLink href={`mailto:${siteConfig.email}`} label="Email">
-                <Mail className="size-4.5" />
-              </SocialLink>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            {columns.map((col) => (
-              <div key={col.title}>
-                <h3 className="text-sm font-semibold text-white">{col.title}</h3>
-                <ul className="mt-4 space-y-3">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="text-sm text-white/65 transition-colors hover:text-white"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+        <div>
+          <Logo className="text-white" />
+          <p className="mt-5 text-sm leading-relaxed text-white/60">
+            {siteConfig.tagline}
+          </p>
+          <div className="mt-6 flex items-center gap-3">
+            <SocialLink href="#" label="LinkedIn">
+              <IconLinkedin className="size-[18px]" />
+            </SocialLink>
+            <SocialLink href="#" label="YouTube">
+              <IconYoutube className="size-[18px]" />
+            </SocialLink>
+            <SocialLink href={`mailto:${siteConfig.email}`} label="Email">
+              <Mail className="size-4.5" />
+            </SocialLink>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/65 sm:flex-row">
+        <div className="mt-14 flex justify-center border-t border-white/10 pt-8 text-sm text-white/65">
           <p>© 2026 AgoraLive. Tous droits réservés.</p>
-          <p className="flex items-center gap-1.5">
-            Conçu avec soin en France 🇫🇷
-          </p>
         </div>
       </div>
     </footer>

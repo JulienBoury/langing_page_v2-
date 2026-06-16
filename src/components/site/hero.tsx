@@ -71,7 +71,7 @@ export function Hero() {
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
             <CtaLink href="#contact" size="lg">
-              Demander une démo
+              Demander un devis
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </CtaLink>
             <CtaLink href="#showcase" variant="glass" size="lg">
@@ -147,7 +147,7 @@ function HeroVisual() {
           <span className="size-2.5 rounded-full bg-yellow-400/70" />
           <span className="size-2.5 rounded-full bg-green-400/70" />
           <div className="ml-3 flex-1 truncate rounded-md bg-white/5 px-3 py-1 text-[11px] text-white/65">
-            agoralive.fr/article/sfodf-2026-aligneurs
+            agoralive.fr/article/exemple2026
           </div>
         </div>
 

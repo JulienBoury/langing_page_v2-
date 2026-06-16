@@ -57,7 +57,7 @@ export function HowItWorks() {
           </h2>
           <p className="mt-5 text-pretty text-lg text-muted-foreground">
             Un processus clé en main. Vous restez concentrés sur votre congrès,
-            on s'occupe de transformer son contenu en or éditorial.
+            on transforme son contenu en mémoire durable.
           </p>
         </Reveal>
 

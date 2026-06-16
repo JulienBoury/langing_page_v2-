@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { Play, Headphones, Image as ImageIcon, BadgeCheck } from "lucide-react";
+import Image from "next/image";
+import {
+  Headphones,
+  Image as ImageIcon,
+  BadgeCheck,
+  ThumbsUp,
+  Check,
+} from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
-
-/**
- * 👉 VERSION AUDIO DE DÉMO (optionnel)
- * Déposez un fichier audio dans /public/audio/demo.mp3 (ou collez une URL)
- * et renseignez le chemin ci-dessous pour activer l'écoute. Vide = aperçu statique.
- */
-const DEMO_AUDIO_SRC = "";
 
 const highlights = [
   {
@@ -27,6 +26,16 @@ const highlights = [
     title: "Références vérifiées",
     text: "Chaque source est cliquable et croisée avec la littérature.",
   },
+];
+
+/** Tags réels de l'article (magazine SFOPA 2026). */
+const ARTICLE_TAGS = [
+  "Orthodontie",
+  "Aligneurs",
+  "Télémédecine",
+  "Intelligence artificielle",
+  "Observance",
+  "Suivi à distance",
 ];
 
 export function Showcase() {
@@ -56,8 +65,8 @@ export function Showcase() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto mt-14 max-w-4xl">
-          <ArticlePreview />
+        <Reveal delay={0.1} className="mx-auto mt-14 w-full max-w-4xl">
+          <ArticleCard />
         </Reveal>
 
         <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
@@ -79,61 +88,77 @@ export function Showcase() {
   );
 }
 
-function ArticlePreview() {
-  const [playing, setPlaying] = useState(false);
-  const hasAudio = Boolean(DEMO_AUDIO_SRC);
-
+/**
+ * Carte d'article telle que la reçoit la communauté — reproduction fidèle de
+ * l'article sponsorisé « DentalMonitoring » du magazine SFOPA 2026.
+ */
+function ArticleCard() {
   return (
-    <div className="group relative aspect-video overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10">
-      {/* Poster (visuel d'article) */}
-      <div className="absolute inset-0 bg-brand-gradient" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.22),transparent_55%)]" />
-      <div className="absolute inset-0 bg-black/30" />
+    <article className="grid overflow-hidden rounded-3xl bg-white text-ink shadow-2xl shadow-black/50 ring-1 ring-black/5 sm:grid-cols-[1.15fr_1fr]">
+      {/* Visuel hero — dashboard DentalMonitoring */}
+      <div className="relative aspect-[16/10] bg-[#eef1f3] sm:aspect-auto">
+        <Image
+          src="/showcase/dental-monitoring-dashboard.webp"
+          alt="Dashboard DentalMonitoring : suivi à distance d'un traitement par aligneurs"
+          fill
+          sizes="(max-width: 768px) 100vw, 440px"
+          className="object-cover"
+        />
+      </div>
 
-      {/* Pill version audio */}
-      <span className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-black/35 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
-        <Headphones className="size-3.5" />
-        Version audio · multilingue
-      </span>
-
-      {playing && hasAudio ? (
-        <div className="absolute inset-x-6 bottom-6">
-          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-          <audio className="w-full" src={DEMO_AUDIO_SRC} controls autoPlay />
-        </div>
-      ) : (
-        <>
-          {/* Bouton écouter */}
-          <button
-            type="button"
-            onClick={() => hasAudio && setPlaying(true)}
-            aria-label="Écouter la version audio de l'article"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-          >
-            <span className="relative flex size-20 items-center justify-center">
-              <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-white/40" />
-              <span className="relative inline-flex size-20 items-center justify-center rounded-full bg-white text-ink shadow-xl transition-transform duration-300 group-hover:scale-105">
-                <Play className="size-8 translate-x-0.5 fill-current" />
-              </span>
-            </span>
-          </button>
-
-          {/* Bas de cadre */}
-          <span className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-left">
-            <span className="text-white">
-              <span className="block text-sm font-semibold sm:text-base">
-                Aligneurs et contrôle de l'ancrage
-              </span>
-              <span className="block text-xs text-white/75 sm:text-sm">
-                Dr. Camille Laurent · Congrès SFODF
-              </span>
-            </span>
-            <span className="rounded-md bg-black/40 px-2 py-1 font-mono text-xs text-white/90 backdrop-blur">
-              8:24
-            </span>
+      <div className="flex flex-col justify-center p-6 sm:p-7">
+        {/* Rubriques */}
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="rounded-full bg-brand-strong px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-white">
+            À la une
           </span>
-        </>
-      )}
-    </div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-brand-strong">
+            Orthodontie · SFOPA
+          </span>
+        </div>
+
+        {/* Titre */}
+        <h3 className="mt-3 font-serif text-xl font-semibold leading-tight tracking-tight text-ink sm:text-2xl">
+          DentalMonitoring : l&apos;aligneur sous l&apos;œil de l&apos;IA
+        </h3>
+
+        {/* Chapô */}
+        <p className="mt-3 text-sm leading-relaxed text-ink/80">
+          Le traitement par aligneurs repose sur une coopération étroite entre
+          praticien et patient, parfois fragilisée par l&apos;espacement des
+          rendez-vous. Cette revue examine ce que la littérature scientifique dit
+          aujourd&apos;hui du monitoring à distance, de la précision de la
+          détection par intelligence artificielle à son effet sur l&apos;observance,
+          le tracking des gouttières et l&apos;organisation du cabinet.
+        </p>
+
+        {/* Tags */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          {ARTICLE_TAGS.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-brand/25 bg-brand/[0.06] px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-wide text-brand-strong"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Pied de carte */}
+        <div className="mt-5 flex items-center gap-3 border-t border-black/[0.07] pt-4 text-xs text-ink/50">
+          <span className="inline-flex size-7 items-center justify-center rounded-full bg-ink/5 text-sm text-ink/40">
+            ?
+          </span>
+          <span>~7 min de lecture</span>
+          <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-ink/5 px-2.5 py-1 font-medium text-ink/60">
+            <ThumbsUp className="size-3.5" />2
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 font-medium text-emerald-700">
+            <Check className="size-3.5" />
+            Déjà lu
+          </span>
+        </div>
+      </div>
+    </article>
   );
 }
