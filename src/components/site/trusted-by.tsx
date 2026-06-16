@@ -25,7 +25,7 @@ export function TrustedBy() {
             {[...partners, ...partners].map((name, i) => (
               <div
                 key={`${name}-${i}`}
-                className="flex shrink-0 items-center gap-2 text-foreground/35 transition-colors hover:text-foreground/60"
+                className="flex shrink-0 items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
               >
                 <Activity className="size-5" />
                 <span className="whitespace-nowrap font-heading text-lg font-semibold tracking-tight">

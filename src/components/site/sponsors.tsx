@@ -25,7 +25,7 @@ const benefits = [
 
 export function Sponsors() {
   return (
-    <section id="sponsors" className="relative scroll-mt-20 py-24 sm:py-32">
+    <section id="sponsors" className="relative scroll-mt-20 overflow-hidden py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Texte */}

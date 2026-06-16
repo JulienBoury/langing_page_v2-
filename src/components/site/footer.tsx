@@ -66,7 +66,7 @@ export function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm text-white/55 transition-colors hover:text-white"
+                        className="text-sm text-white/65 transition-colors hover:text-white"
                       >
                         {link.label}
                       </a>
@@ -78,7 +78,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/50 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/65 sm:flex-row">
           <p>© 2026 AgoraLive. Tous droits réservés.</p>
           <p className="flex items-center gap-1.5">
             Conçu avec soin en France 🇫🇷

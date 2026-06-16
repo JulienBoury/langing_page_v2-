@@ -43,7 +43,7 @@ export function Cta() {
             </CtaLink>
           </div>
 
-          <p className="mt-6 text-sm text-white/45">
+          <p className="mt-6 text-sm text-white/65">
             Démo personnalisée · Réponse sous 24 h · Conçu pour les sociétés
             savantes
           </p>

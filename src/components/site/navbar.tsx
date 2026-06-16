@@ -26,22 +26,23 @@ export function Navbar() {
     };
   }, [open]);
 
+  // Le logo officiel est en blanc/cyan → la barre reste toujours sombre
+  // (transparente au sommet sur le hero, navy glassy au scroll).
+  const solid = scrolled || open;
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-border/60 bg-background/80 backdrop-blur-xl"
+        solid
+          ? "border-b border-white/10 bg-ink/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <a
           href="#top"
-          className={cn(
-            "transition-colors",
-            scrolled ? "text-foreground" : "text-white"
-          )}
+          className="text-white"
           aria-label="AgoraLive — accueil"
         >
           <Logo />
@@ -52,12 +53,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className={cn(
-                "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                scrolled
-                  ? "text-foreground/70 hover:bg-muted hover:text-foreground"
-                  : "text-white/75 hover:bg-white/10 hover:text-white"
-              )}
+              className="rounded-lg px-3 py-2 text-sm font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white"
             >
               {item.label}
             </a>
@@ -81,12 +77,7 @@ export function Navbar() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
-          className={cn(
-            "inline-flex size-10 items-center justify-center rounded-lg transition-colors lg:hidden",
-            scrolled || open
-              ? "text-foreground hover:bg-muted"
-              : "text-white hover:bg-white/10"
-          )}
+          className="inline-flex size-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
         </button>
@@ -95,7 +86,7 @@ export function Navbar() {
       {/* Mobile panel */}
       <div
         className={cn(
-          "lg:hidden overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 ease-out",
+          "lg:hidden overflow-hidden border-t border-white/10 bg-ink/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 ease-out",
           open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         )}
       >
@@ -105,7 +96,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-3 text-base font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+              className="rounded-lg px-3 py-3 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
             >
               {item.label}
             </a>

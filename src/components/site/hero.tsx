@@ -155,7 +155,7 @@ function HeroVisual() {
           <span className="size-2.5 rounded-full bg-red-400/70" />
           <span className="size-2.5 rounded-full bg-yellow-400/70" />
           <span className="size-2.5 rounded-full bg-green-400/70" />
-          <div className="ml-3 flex-1 truncate rounded-md bg-white/5 px-3 py-1 text-[11px] text-white/40">
+          <div className="ml-3 flex-1 truncate rounded-md bg-white/5 px-3 py-1 text-[11px] text-white/65">
             agoralive.fr/article/sfodf-2026-aligneurs
           </div>
         </div>
@@ -194,9 +194,9 @@ function HeroVisual() {
             </div>
           </div>
           <div className="space-y-2 pt-1">
-            <div className="h-2 w-full rounded-full bg-white/8" />
-            <div className="h-2 w-[92%] rounded-full bg-white/8" />
-            <div className="h-2 w-[78%] rounded-full bg-white/8" />
+            <div className="h-2 w-full rounded-full bg-white/10" />
+            <div className="h-2 w-[92%] rounded-full bg-white/10" />
+            <div className="h-2 w-[78%] rounded-full bg-white/10" />
           </div>
           {/* Mini graphique */}
           <div className="flex items-end gap-2 rounded-xl border border-white/10 bg-white/[0.02] p-3">

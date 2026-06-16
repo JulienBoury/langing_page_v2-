@@ -68,7 +68,7 @@ export function Showcase() {
             >
               <h.icon className="size-5 text-brand-accent" />
               <h3 className="mt-3 font-semibold text-white">{h.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-white/55">
+              <p className="mt-1.5 text-sm leading-relaxed text-white/65">
                 {h.text}
               </p>
             </div>
