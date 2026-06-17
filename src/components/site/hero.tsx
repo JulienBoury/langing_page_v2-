@@ -11,6 +11,7 @@ import {
   FileText,
 } from "lucide-react";
 import { CtaLink } from "./cta-button";
+import { ShaderBackground } from "./shader-background";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -113,11 +114,11 @@ export function Hero() {
 
 function HeroBackground() {
   return (
-    <div className="absolute inset-0 -z-10">
-      {/* Blobs aurora */}
-      <div className="absolute -left-40 -top-40 size-[42rem] rounded-full bg-brand opacity-30 blur-[120px] animate-aurora" />
-      <div className="absolute -right-40 top-10 size-[38rem] rounded-full bg-brand-2 opacity-25 blur-[120px] animate-aurora [animation-delay:-6s]" />
-      <div className="absolute bottom-0 left-1/3 size-[34rem] rounded-full bg-brand-accent opacity-20 blur-[120px] animate-aurora [animation-delay:-12s]" />
+    <div className="absolute inset-0 -z-10 bg-ink">
+      {/* Repli CSS (avant init du shader / si WebGL indispo) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,color-mix(in_oklch,var(--brand)_16%,transparent),transparent_45%),radial-gradient(circle_at_85%_20%,color-mix(in_oklch,var(--brand-2)_14%,transparent),transparent_50%)]" />
+      {/* Shader WebGL animé */}
+      <ShaderBackground className="absolute inset-0" />
       {/* Grille */}
       <div className="absolute inset-0 bg-grid opacity-[0.18] mask-fade-y" />
       {/* Vignette */}
