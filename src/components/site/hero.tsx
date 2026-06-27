@@ -47,8 +47,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.06 }}
             className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            Valorisons votre <span className="text-gradient">congrès</span> et vos{" "}
-            <span className="text-gradient">sponsors</span>
+            Valorisons votre <span className="text-brand">congrès</span> et vos{" "}
+            <span className="text-brand">sponsors</span>
           </motion.h1>
 
           <motion.p
@@ -124,7 +124,7 @@ function HeroVisual() {
       className="relative mx-auto w-full max-w-md lg:mx-0"
     >
       {/* Halo doux */}
-      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand-gradient opacity-10 blur-2xl" />
+      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand-gray opacity-10 blur-2xl" />
 
       {/* Carte article épurée (sans barre de navigateur) */}
       <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-foreground/10 ring-1 ring-black/5">

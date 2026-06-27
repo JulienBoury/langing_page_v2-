@@ -2,7 +2,6 @@
 
 import { Check, TrendingUp, Eye, Clock } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
-import { CtaLink } from "./cta-button";
 
 const benefits = [
   {
@@ -30,7 +29,7 @@ export function Sponsors() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Texte */}
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wider text-brand-strong">
+            <p className="text-sm font-semibold uppercase tracking-wider text-brand">
               Pour les sponsors & l'industrie
             </p>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -57,17 +56,11 @@ export function Sponsors() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-9">
-              <CtaLink href="#contact" size="lg">
-                Discuter d'un partenariat
-              </CtaLink>
-            </div>
           </Reveal>
 
           {/* Visuel : panneau de performance */}
           <Reveal delay={0.1} className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-brand-gradient opacity-[0.06] blur-2xl" />
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-brand-gray opacity-[0.08] blur-2xl" />
             <div className="rounded-3xl border border-border bg-card p-6 shadow-xl sm:p-8">
               <div className="flex items-center justify-between">
                 <div>

@@ -78,44 +78,44 @@
 
   /* ===== IDENTITÉ DE MARQUE AgoraLive (hex officiels) ===== */
   --brand: #24ebc3; /* teal vif — "Live" du logo */
-  --brand-strong: oklch(0.5 0.11 184); /* teal foncé — texte/accents sur fond clair (≈5.5:1 sur blanc) */
-  --brand-2: oklch(0.72 0.14 192); /* teal-cyan — gradient */
-  --brand-accent: oklch(0.88 0.11 168); /* menthe claire — accents sur sombre */
-  --brand-foreground: #314253; /* navy — texte sur aplat teal */
+  --brand-strong: oklch(0.5 0.12 174); /* teal foncé — texte/accents, même teinte (174) que le bouton */
+  --brand-2: oklch(0.78 0.15 174); /* teal — gradient/survol, même teinte que le bouton */
+  --brand-accent: oklch(0.9 0.1 174); /* teal clair — accents sur sombre, même teinte */
+  --brand-foreground: #000056; /* navy — texte sur aplat teal */
   --brand-gray: #95a3a5; /* gris bleuté — neutre / barre logo */
-  --ink: #314253; /* navy — sections sombres */
+  --ink: #000056; /* navy — sections sombres */
   --ink-2: oklch(0.39 0.035 250); /* navy clair — cartes sur sombre */
   /* ======================================================== */
 
   --background: #ffffff;
-  --foreground: #314253; /* navy slate — texte principal */
+  --foreground: #000056; /* navy slate — texte principal */
   --card: #ffffff;
-  --card-foreground: #314253;
+  --card-foreground: #000056;
   --popover: #ffffff;
-  --popover-foreground: #314253;
-  --primary: oklch(0.54 0.11 184); /* teal foncé (boutons shadcn) */
+  --popover-foreground: #000056;
+  --primary: oklch(0.54 0.12 174); /* teal foncé (boutons shadcn) */
   --primary-foreground: #ffffff;
   --secondary: oklch(0.97 0.006 220);
-  --secondary-foreground: #314253;
+  --secondary-foreground: #000056;
   --muted: oklch(0.97 0.006 220);
   --muted-foreground: oklch(0.52 0.018 240);
-  --accent: oklch(0.95 0.03 185); /* teal très clair */
-  --accent-foreground: oklch(0.42 0.09 188);
+  --accent: oklch(0.95 0.03 174); /* teal très clair */
+  --accent-foreground: oklch(0.42 0.1 174);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.92 0.008 240);
   --input: oklch(0.92 0.008 240);
-  --ring: oklch(0.54 0.11 184);
+  --ring: oklch(0.54 0.12 174);
   --chart-1: #24ebc3;
-  --chart-2: #314253;
+  --chart-2: #000056;
   --chart-3: #95a3a5;
-  --chart-4: oklch(0.72 0.14 192);
-  --chart-5: oklch(0.88 0.11 168);
+  --chart-4: oklch(0.78 0.15 174);
+  --chart-5: oklch(0.9 0.1 174);
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: #314253;
+  --sidebar-foreground: #000056;
   --sidebar-primary: oklch(0.54 0.11 184);
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: oklch(0.95 0.03 185);
-  --sidebar-accent-foreground: #314253;
+  --sidebar-accent-foreground: #000056;
   --sidebar-border: oklch(0.92 0.008 240);
   --sidebar-ring: oklch(0.54 0.11 184);
 }
@@ -189,8 +189,7 @@
     background-image: linear-gradient(
       100deg,
       var(--brand-strong) 0%,
-      var(--brand) 45%,
-      var(--brand-accent) 100%
+      color-mix(in oklch, var(--brand) 45%, var(--brand-strong)) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;

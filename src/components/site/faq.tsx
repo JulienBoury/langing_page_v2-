@@ -37,7 +37,7 @@ export function Faq() {
     <section id="faq" className="scroll-mt-20 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand-strong">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand">
             FAQ
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
