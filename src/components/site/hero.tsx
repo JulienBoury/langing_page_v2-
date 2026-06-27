@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import heroArticle from "../../../public/hero-article.jpg";
 import { motion, useReducedMotion } from "motion/react";
 import {
   ArrowRight,
@@ -141,7 +142,7 @@ function HeroVisual() {
         {/* Visuel d'article (photo de conférence) avec écoute */}
         <div className="relative aspect-[16/8] bg-muted">
           <Image
-            src="/hero-article.jpg"
+            src={heroArticle}
             alt="Conférencière présentant lors d'un congrès médical"
             fill
             sizes="(max-width: 1024px) 100vw, 440px"
