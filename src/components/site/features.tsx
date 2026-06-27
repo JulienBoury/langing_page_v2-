@@ -88,7 +88,7 @@ export function Features() {
 
 function FeatureCard({ icon: Icon, title, description }: Feature) {
   return (
-    <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5">
+    <div className="group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5">
       <div className="pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-brand-gradient opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-10" />
       <div className="inline-flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand-strong ring-1 ring-inset ring-brand/15 transition-colors group-hover:bg-brand-strong group-hover:text-white">
         <Icon className="size-6" />

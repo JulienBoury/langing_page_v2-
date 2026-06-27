@@ -44,8 +44,8 @@ export function Sponsors() {
 
             <ul className="mt-8 space-y-4">
               {benefits.map((b) => (
-                <li key={b.title} className="flex gap-3.5">
-                  <span className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-strong ring-1 ring-inset ring-brand/20">
+                <li key={b.title} className="flex items-center gap-3.5">
+                  <span className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-strong ring-1 ring-inset ring-brand/20">
                     <Check className="size-3.5" />
                   </span>
                   <div>

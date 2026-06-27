@@ -23,8 +23,8 @@ export function Cta() {
             Prêt à donner une seconde vie à vos congrès ?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg text-white/70">
-            Réservez une démo de 20 minutes. On vous montre, sur l'une de vos
-            propres sessions, ce qu'AgoraLive peut produire — sans engagement.
+            Réservez une démo de 10 minutes. On vous montre ce qu'AgoraLive
+            peut produire.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

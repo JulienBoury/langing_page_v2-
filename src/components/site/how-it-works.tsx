@@ -68,7 +68,7 @@ export function HowItWorks() {
           <StaggerGroup className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {steps.map((s) => (
               <StaggerItem key={s.step}>
-                <div className="relative flex flex-col items-start">
+                <div className="relative flex flex-col items-center text-center">
                   <div className="relative z-10 inline-flex size-24 items-center justify-center rounded-2xl border border-border bg-card shadow-sm">
                     <s.icon className="size-9 text-brand-strong" />
                     <span className="absolute -right-2 -top-2 inline-flex size-7 items-center justify-center rounded-full bg-brand-gradient font-mono text-xs font-bold text-ink shadow-md">
