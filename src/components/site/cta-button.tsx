@@ -8,7 +8,7 @@ const sizes = {
 
 const variants = {
   primary:
-    "bg-brand-gradient text-ink font-semibold shadow-lg shadow-brand/25 hover:shadow-xl hover:shadow-brand/40 hover:-translate-y-0.5",
+    "bg-brand text-ink font-semibold shadow-lg shadow-brand/25 hover:bg-brand-2 hover:shadow-xl hover:shadow-brand/40 hover:-translate-y-0.5",
   outline:
     "border border-border bg-background/70 backdrop-blur text-foreground hover:bg-muted hover:-translate-y-0.5",
   light:

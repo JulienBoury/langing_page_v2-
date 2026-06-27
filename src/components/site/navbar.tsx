@@ -26,8 +26,8 @@ export function Navbar() {
     };
   }, [open]);
 
-  // Le logo officiel est en blanc/cyan → la barre reste toujours sombre
-  // (transparente au sommet sur le hero, navy glassy au scroll).
+  // Hero clair : au sommet la barre est transparente et le logo/liens passent
+  // en navy ; au scroll (ou menu ouvert) la barre devient navy glassy → blanc.
   const solid = scrolled || open;
 
   return (
@@ -42,7 +42,10 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <a
           href="#top"
-          className="text-white"
+          className={cn(
+            "transition-colors",
+            solid ? "text-white" : "text-foreground"
+          )}
           aria-label="AgoraLive — accueil"
         >
           <Logo />
@@ -53,7 +56,14 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white"
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className={cn(
+                "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                solid
+                  ? "text-white/75 hover:bg-white/10 hover:text-white"
+                  : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
+              )}
             >
               {item.label}
             </a>
@@ -77,7 +87,12 @@ export function Navbar() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
-          className="inline-flex size-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
+          className={cn(
+            "inline-flex size-10 items-center justify-center rounded-lg transition-colors lg:hidden",
+            solid
+              ? "text-white hover:bg-white/10"
+              : "text-foreground hover:bg-foreground/5"
+          )}
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
         </button>
@@ -95,6 +110,8 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               onClick={() => setOpen(false)}
               className="rounded-lg px-3 py-3 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
             >

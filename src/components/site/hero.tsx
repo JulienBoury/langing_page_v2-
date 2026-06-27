@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import {
   ArrowRight,
@@ -11,7 +12,7 @@ import {
   FileText,
 } from "lucide-react";
 import { CtaLink } from "./cta-button";
-import { ShaderBackground } from "./shader-background";
+import { siteConfig } from "@/lib/site";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -19,11 +20,8 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate overflow-hidden bg-ink text-white"
+      className="relative isolate overflow-hidden bg-background text-foreground"
     >
-      {/* ---------- Arrière-plan ---------- */}
-      <HeroBackground />
-
       {/* ---------- Contenu ---------- */}
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-24 pt-32 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-32 lg:pt-40 lg:px-8">
         {/* Colonne texte */}
@@ -33,11 +31,11 @@ export function Hero() {
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/80 backdrop-blur transition-colors hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-muted"
           >
             <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-brand-accent" />
-              <span className="relative inline-flex size-2 rounded-full bg-brand-accent" />
+              <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-brand-strong" />
+              <span className="relative inline-flex size-2 rounded-full bg-brand-strong" />
             </span>
             Pour les sociétés savantes & congrès médicaux
           </motion.a>
@@ -46,18 +44,17 @@ export function Hero() {
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.06 }}
-            className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
+            className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            Vos conférences de congrès{" "}
-            <span className="text-gradient">transformées en articles scientifiques</span>
-            , vos <span className="text-gradient">sponsors valorisés.</span>
+            Valorisons votre <span className="text-gradient">congrès</span> et vos{" "}
+            <span className="text-gradient">sponsors</span>
           </motion.h1>
 
           <motion.p
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.14 }}
-            className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/70"
+            className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
           >
             Notre équipe capte les conférences de vos congrès et les transforme
             en articles scientifiques : interactifs, traduits dans toutes les
@@ -75,7 +72,13 @@ export function Hero() {
               Demander un devis
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </CtaLink>
-            <CtaLink href="#showcase" variant="glass" size="lg">
+            <CtaLink
+              href={siteConfig.cta.secondary.href}
+              variant="outline"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Eye className="size-4" />
               Voir un exemple
             </CtaLink>
@@ -85,18 +88,18 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.34 }}
-            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70"
+            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
           >
             <span className="inline-flex items-center gap-2">
-              <BadgeCheck className="size-4 text-brand-accent" />
+              <BadgeCheck className="size-4 text-brand-strong" />
               Vérifié par la littérature (PubMed)
             </span>
             <span className="inline-flex items-center gap-2">
-              <Languages className="size-4 text-brand-accent" />
+              <Languages className="size-4 text-brand-strong" />
               Traduit & version audio
             </span>
             <span className="inline-flex items-center gap-2">
-              <Sparkles className="size-4 text-brand-accent" />
+              <Sparkles className="size-4 text-brand-strong" />
               Aux couleurs de votre congrès
             </span>
           </motion.div>
@@ -105,25 +108,7 @@ export function Hero() {
         {/* Colonne visuel */}
         <HeroVisual />
       </div>
-
-      {/* Dégradé de transition vers la section suivante */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
     </section>
-  );
-}
-
-function HeroBackground() {
-  return (
-    <div className="absolute inset-0 -z-10 bg-ink">
-      {/* Repli CSS (avant init du shader / si WebGL indispo) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,color-mix(in_oklch,var(--brand)_16%,transparent),transparent_45%),radial-gradient(circle_at_85%_20%,color-mix(in_oklch,var(--brand-2)_14%,transparent),transparent_50%)]" />
-      {/* Shader WebGL animé */}
-      <ShaderBackground className="absolute inset-0" />
-      {/* Grille */}
-      <div className="absolute inset-0 bg-grid opacity-[0.18] mask-fade-y" />
-      {/* Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_30%,var(--ink)_85%)]" />
-    </div>
   );
 }
 
@@ -137,96 +122,114 @@ function HeroVisual() {
       transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
       className="relative mx-auto w-full max-w-md lg:mx-0"
     >
-      {/* Halo */}
-      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand-gradient opacity-30 blur-2xl" />
+      {/* Halo doux */}
+      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-brand-gradient opacity-10 blur-2xl" />
 
-      {/* Carte navigateur / article */}
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-ink-2 shadow-2xl shadow-black/40 ring-1 ring-white/5">
-        {/* Barre de navigateur */}
-        <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-3">
-          <span className="size-2.5 rounded-full bg-red-400/70" />
-          <span className="size-2.5 rounded-full bg-yellow-400/70" />
-          <span className="size-2.5 rounded-full bg-green-400/70" />
-          <div className="ml-3 flex-1 truncate rounded-md bg-white/5 px-3 py-1 text-[11px] text-white/65">
-            agoralive.fr/article/exemple2026
-          </div>
+      {/* Carte article épurée (sans barre de navigateur) */}
+      <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-foreground/10 ring-1 ring-black/5">
+        {/* En-tête léger : provenance de l'article */}
+        <div className="flex items-center justify-between border-b border-border bg-muted/40 px-4 py-3">
+          <span className="inline-flex items-center gap-2 text-[11px] font-medium text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-brand-strong" />
+            Article AgoraLive
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-accent/25 px-2.5 py-1 text-[11px] font-medium text-brand-strong">
+            Exemple
+          </span>
         </div>
 
-        {/* Visuel d'article (photo / diapo) avec écoute */}
-        <div className="relative aspect-[16/8] bg-brand-gradient">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.25),transparent_55%)]" />
-          <button className="group/play absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/30 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/45">
+        {/* Visuel d'article (photo de conférence) avec écoute */}
+        <div className="relative aspect-[16/8] bg-muted">
+          <Image
+            src="/hero-article.jpg"
+            alt="Conférencière présentant lors d'un congrès médical"
+            fill
+            sizes="(max-width: 1024px) 100vw, 440px"
+            priority
+            className="object-cover object-[50%_30%]"
+          />
+          {/* Voile bas pour la lisibilité du bouton */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          {/* Langues disponibles — l'article est traduit (FR · EN · ES) */}
+          <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/35 p-1 backdrop-blur">
+            <span className="rounded-full bg-white px-1.5 py-0.5 text-[10px] font-bold leading-none text-ink">
+              FR
+            </span>
+            <span className="px-1 text-[10px] font-semibold leading-none text-white/70">
+              EN
+            </span>
+            <span className="px-1 text-[10px] font-semibold leading-none text-white/70">
+              ES
+            </span>
+          </div>
+          <button className="group/play absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/35 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/50">
             <span className="inline-flex size-6 items-center justify-center rounded-full bg-white text-ink">
               <Headphones className="size-3" />
             </span>
             Écouter l'article
           </button>
-          <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-black/30 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-accent" />
-            Congrès SFODF
-          </span>
         </div>
 
         {/* Corps de l'article */}
         <div className="space-y-4 p-5">
-          <div className="flex items-center gap-2 text-[11px] text-white/65">
-            <span className="inline-flex items-center gap-1 rounded-full bg-brand-accent/15 px-2 py-0.5 font-medium text-brand-accent">
+          <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
+            <span className="inline-flex items-center gap-1 rounded-full bg-brand-accent/25 px-2 py-0.5 font-medium text-brand-strong">
               <BadgeCheck className="size-3" /> Vérifié
             </span>
             <span>6 min de lecture</span>
           </div>
-          <h3 className="text-balance text-base font-semibold leading-snug text-white">
+          <h3 className="text-balance text-base font-semibold leading-snug text-foreground">
             Aligneurs et contrôle de l'ancrage : ce que disent les données
           </h3>
           <div className="flex items-center gap-2.5">
             <span className="size-7 rounded-full bg-brand-gradient" />
-            <div className="text-[11px] leading-tight text-white/65">
-              <p className="font-medium text-white/80">Dr. Camille</p>
+            <div className="text-[11px] leading-tight text-muted-foreground">
+              <p className="font-medium text-foreground">Dr. Camille</p>
               <p>Orthodontiste · CHU de Paris</p>
             </div>
           </div>
           <div className="space-y-2 pt-1">
-            <div className="h-2 w-full rounded-full bg-white/10" />
-            <div className="h-2 w-[92%] rounded-full bg-white/10" />
-            <div className="h-2 w-[78%] rounded-full bg-white/10" />
+            <div className="h-2 w-full rounded-full bg-muted" />
+            <div className="h-2 w-[92%] rounded-full bg-muted" />
+            <div className="h-2 w-[78%] rounded-full bg-muted" />
           </div>
           {/* Quiz en lien avec l'article */}
-          <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3">
-            <div className="flex items-center gap-2 text-[11px] text-white/70">
-              <span className="inline-flex size-6 items-center justify-center rounded-lg bg-brand-accent/15 text-brand-accent">
+          <div className="flex items-center justify-between rounded-xl border border-border bg-muted/40 p-3">
+            <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
+              <span className="inline-flex size-6 items-center justify-center rounded-lg bg-brand-accent/25 text-brand-strong">
                 <BadgeCheck className="size-3.5" />
               </span>
               Quiz · 5 questions
             </div>
-            <span className="rounded-md bg-brand-accent/15 px-2 py-0.5 text-[10px] font-medium text-brand-accent">
+            <span className="rounded-md bg-brand-accent/25 px-2 py-0.5 text-[10px] font-medium text-brand-strong">
               Commencer
             </span>
           </div>
         </div>
       </div>
 
-      {/* Badges flottants */}
+      {/* Badges flottants — style clair */}
       <motion.div
         animate={reduce ? undefined : { y: [0, -10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-5 top-24 hidden items-center gap-2 rounded-xl border border-white/10 bg-ink-2/90 px-3 py-2 shadow-xl backdrop-blur sm:flex"
+        className="absolute -left-5 top-24 hidden items-center gap-2 rounded-xl border border-border bg-white/90 px-3 py-2 shadow-lg shadow-foreground/10 backdrop-blur sm:flex"
       >
-        <FileText className="size-4 text-brand-accent" />
+        <FileText className="size-4 text-brand-strong" />
         <div className="text-[11px] leading-tight">
-          <p className="font-semibold text-white">12 références</p>
-          <p className="text-white/65">croisées PubMed</p>
+          <p className="font-semibold text-foreground">12 références</p>
+          <p className="text-muted-foreground">croisées PubMed</p>
         </div>
       </motion.div>
 
       <motion.div
         animate={reduce ? undefined : { y: [0, 12, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute -right-4 bottom-10 hidden items-center gap-2 rounded-xl border border-white/10 bg-ink-2/90 px-3 py-2 shadow-xl backdrop-blur sm:flex"
+        className="absolute -right-4 bottom-10 hidden items-center gap-2 rounded-xl border border-border bg-white/90 px-3 py-2 shadow-lg shadow-foreground/10 backdrop-blur sm:flex"
       >
-        <Headphones className="size-4 text-brand-accent" />
+        <Headphones className="size-4 text-brand-strong" />
         <div className="text-[11px] leading-tight">
-          <p className="font-semibold text-white">Version audio</p>
-          <p className="text-white/65">8 min d'écoute</p>
+          <p className="font-semibold text-foreground">Version audio</p>
+          <p className="text-muted-foreground">8 min d'écoute</p>
         </div>
       </motion.div>
     </motion.div>

@@ -3,10 +3,16 @@ import { Activity } from "lucide-react";
 // Congrès & partenaires ayant déjà valorisé leurs contenus avec AgoraLive.
 const partners = [
   "Top Ortho",
+  "OrthoPlus",
   "Dental Monitoring",
   "SFODF",
   "SFOPA",
 ];
+
+// Défilement infini sans couture : l'animation translate de -50%, donc la
+// première moitié de la piste doit dépasser la largeur de l'écran. On répète
+// donc la liste assez de fois pour remplir le viewport quelle que soit sa taille.
+const marqueeItems = [...partners, ...partners, ...partners, ...partners];
 
 export function TrustedBy() {
   return (
@@ -17,8 +23,8 @@ export function TrustedBy() {
         </p>
 
         <div className="relative mt-8 overflow-hidden mask-fade-x">
-          <div className="flex w-max animate-marquee items-center gap-12 hover:[animation-play-state:paused]">
-            {[...partners, ...partners].map((name, i) => (
+          <div className="flex w-max animate-marquee-slow items-center gap-12 hover:[animation-play-state:paused]">
+            {marqueeItems.map((name, i) => (
               <div
                 key={`${name}-${i}`}
                 className="flex shrink-0 items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"

@@ -28,7 +28,7 @@ const features: Feature[] = [
     icon: Wand2,
     title: "Rédaction scientifique assistée",
     description:
-      "Notre moteur transforme la captation en véritable article structuré, relu par des experts. Pas une transcription brute : un contenu publiable.",
+      "Notre moteur transforme la captation en article structuré, relu par nos équipes.",
   },
   {
     icon: ShieldCheck,

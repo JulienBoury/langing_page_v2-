@@ -67,7 +67,7 @@ export function Sponsors() {
 
           {/* Visuel : panneau de performance */}
           <Reveal delay={0.1} className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-brand-gradient opacity-10 blur-2xl" />
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-brand-gradient opacity-[0.06] blur-2xl" />
             <div className="rounded-3xl border border-border bg-card p-6 shadow-xl sm:p-8">
               <div className="flex items-center justify-between">
                 <div>

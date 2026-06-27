@@ -4,13 +4,12 @@ import { siteConfig } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink text-white">
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-brand-gradient opacity-20 blur-3xl" />
-
+    <footer className="relative border-t border-border bg-background text-foreground">
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div>
-          <Logo className="text-white" />
-          <p className="mt-5 text-sm leading-relaxed text-white/60">
+          {/* Logo normal (Agora navy + Live teal) sur fond clair */}
+          <Logo className="text-foreground" />
+          <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
             {siteConfig.tagline}
           </p>
           <div className="mt-6 flex items-center gap-3">
@@ -24,11 +23,13 @@ export function Footer() {
               <Mail className="size-4.5" />
             </SocialLink>
           </div>
+
+          <p className="mt-10 text-center text-sm text-muted-foreground">
+            © 2026 AgoraLive. Tous droits réservés.
+          </p>
         </div>
 
-        <div className="mt-14 flex justify-center border-t border-white/10 pt-8 text-sm text-white/65">
-          <p>© 2026 AgoraLive. Tous droits réservés.</p>
-        </div>
+        <div className="mt-8 border-t border-border" />
       </div>
     </footer>
   );
@@ -47,7 +48,7 @@ function SocialLink({
     <a
       href={href}
       aria-label={label}
-      className="inline-flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-all hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 hover:text-white"
+      className="inline-flex size-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-muted hover:text-foreground"
     >
       {children}
     </a>
