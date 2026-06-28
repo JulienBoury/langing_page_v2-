@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, TrendingUp, Eye, Clock } from "lucide-react";
+import { Check, TrendingUp, Eye, Clock, MousePointerClick } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 
 const benefits = [
@@ -77,9 +77,14 @@ export function Sponsors() {
                 </span>
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-3">
-                <MetricTile icon={Eye} value="48,2k" label="Impressions" />
-                <MetricTile icon={TrendingUp} value="9 410" label="Lectures" />
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <MetricTile icon={Eye} value="1292" label="Impressions" />
+                <MetricTile icon={TrendingUp} value="439" label="Lectures" />
+                <MetricTile
+                  icon={MousePointerClick}
+                  value="312"
+                  label="Clics vers votre site"
+                />
                 <MetricTile icon={Clock} value="4:50" label="Temps moyen" />
               </div>
 

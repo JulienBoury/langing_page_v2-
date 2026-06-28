@@ -90,7 +90,7 @@ function FeatureCard({ icon: Icon, title, description }: Feature) {
   return (
     <div className="group relative flex h-full flex-col items-center overflow-hidden rounded-2xl border border-border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5">
       <div className="pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-brand-gray opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-10" />
-      <div className="inline-flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand-strong ring-1 ring-inset ring-brand/15 transition-colors group-hover:bg-brand-strong group-hover:text-white">
+      <div className="inline-flex size-12 items-center justify-center rounded-xl bg-brand text-white shadow-md shadow-brand/25 transition-transform group-hover:scale-105">
         <Icon className="size-6" />
       </div>
       <h3 className="mt-5 text-lg font-semibold tracking-tight">{title}</h3>

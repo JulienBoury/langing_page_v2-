@@ -61,7 +61,7 @@ export function Navbar() {
               className={cn(
                 "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                 solid
-                  ? "text-white/75 hover:bg-white/10 hover:text-white"
+                  ? "text-white hover:bg-white/10"
                   : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
               )}
             >
@@ -113,7 +113,7 @@ export function Navbar() {
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-3 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+              className="rounded-lg px-3 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
             >
               {item.label}
             </a>
