@@ -83,7 +83,7 @@
   --brand-accent: oklch(0.9 0.1 174); /* teal clair — accents sur sombre, même teinte */
   --brand-foreground: #000056; /* navy — texte sur aplat teal */
   --brand-gray: #95a3a5; /* gris bleuté — neutre / barre logo */
-  --ink: #000056; /* navy — sections sombres */
+  --ink: #08302b; /* teal nuit — sections sombres (navbar, stats, cta) */
   --ink-2: oklch(0.39 0.035 250); /* navy clair — cartes sur sombre */
   /* ======================================================== */
 
