@@ -25,7 +25,7 @@ const benefits = [
 
 export function Sponsors() {
   return (
-    <section id="sponsors" className="relative scroll-mt-20 overflow-hidden py-24 sm:py-32">
+    <section id="sponsors" className="surface-soft relative scroll-mt-20 overflow-hidden py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Texte */}
@@ -64,10 +64,10 @@ export function Sponsors() {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="flex items-center gap-2">
-                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    <p className="label-mono text-[11px] text-muted-foreground">
                       Performance du contenu
                     </p>
-                    <span className="rounded-full bg-brand-accent/25 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brand-strong">
+                    <span className="label-mono rounded-full bg-brand-accent/25 px-2 py-0.5 text-[10px] text-brand-strong">
                       Exemple
                     </span>
                   </div>
@@ -76,7 +76,7 @@ export function Sponsors() {
                     <span className="text-gradient">Votre Marque</span>
                   </p>
                 </div>
-                <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand-strong">
+                <span className="rounded-full bg-brand/10 px-3 py-1 font-mono text-xs font-medium text-brand-strong">
                   30 derniers jours
                 </span>
               </div>
@@ -106,8 +106,8 @@ export function Sponsors() {
                   )}
                 </div>
                 <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
-                  <span>Lectures / jour</span>
-                  <span className="inline-flex items-center gap-1 font-medium text-brand-strong">
+                  <span className="label-mono text-[10px]">Lectures / jour</span>
+                  <span className="inline-flex items-center gap-1 font-mono font-medium text-brand-strong">
                     <TrendingUp className="size-3.5" /> +186%
                   </span>
                 </div>
@@ -132,7 +132,7 @@ function MetricTile({
   return (
     <div className="rounded-2xl border border-border bg-background p-4">
       <Icon className="size-4 text-brand-strong" />
-      <p className="mt-2 font-heading text-xl font-bold tracking-tight">
+      <p className="mt-2 font-mono text-xl font-bold tracking-tight tabular-nums">
         {value}
       </p>
       <p className="text-xs text-muted-foreground">{label}</p>

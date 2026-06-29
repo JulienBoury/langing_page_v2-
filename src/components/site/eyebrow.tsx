@@ -18,7 +18,7 @@ export function Eyebrow({
   return (
     <p
       className={cn(
-        "flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-strong",
+        "label-mono flex items-center gap-2 text-xs text-brand-strong",
         align === "center" ? "justify-center" : "justify-start",
         className
       )}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, Geist_Mono } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Navbar } from "@/components/site/navbar";
@@ -20,8 +20,10 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// JetBrains Mono — mono « lab-label » (eyebrows, pills, chiffres de données).
+// Police variable → pas de poids à spécifier, perf optimale (cf. doc next/font).
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono-jet",
   subsets: ["latin"],
   display: "swap",
 });
@@ -69,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background">
         <a

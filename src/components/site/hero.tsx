@@ -168,11 +168,11 @@ function HeroVisual() {
       <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-foreground/10 ring-1 ring-black/5">
         {/* En-tête léger : provenance de l'article */}
         <div className="flex items-center justify-between border-b border-border bg-muted/40 px-4 py-3">
-          <span className="inline-flex items-center gap-2 text-[11px] font-medium text-muted-foreground">
+          <span className="label-mono inline-flex items-center gap-2 text-[10px] text-muted-foreground">
             <span className="size-1.5 rounded-full bg-brand-strong" />
             Article AgoraLive
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-accent/25 px-2.5 py-1 text-[11px] font-medium text-brand-strong">
+          <span className="label-mono inline-flex items-center gap-1.5 rounded-full bg-brand-accent/25 px-2.5 py-1 text-[10px] text-brand-strong">
             Exemple
           </span>
         </div>
@@ -213,7 +213,7 @@ function HeroVisual() {
             <span className="inline-flex items-center gap-1 rounded-full bg-brand-accent/25 px-2 py-0.5 font-medium text-brand-strong">
               <BadgeCheck className="size-3" /> Vérifié
             </span>
-            <span>6 min de lecture</span>
+            <span className="font-mono">6 min de lecture</span>
           </div>
           <h3 className="text-balance text-base font-semibold leading-snug text-foreground">
             Aligneurs et contrôle de l'ancrage : ce que disent les données
@@ -254,7 +254,7 @@ function HeroVisual() {
         <FileText className="size-4 text-brand-strong" />
         <div className="text-[11px] leading-tight">
           <p className="font-semibold text-foreground">12 références</p>
-          <p className="text-muted-foreground">croisées PubMed</p>
+          <p className="label-mono text-[9px] text-muted-foreground">croisées PubMed</p>
         </div>
       </motion.div>
 
@@ -266,7 +266,7 @@ function HeroVisual() {
         <Headphones className="size-4 text-brand-strong" />
         <div className="text-[11px] leading-tight">
           <p className="font-semibold text-foreground">Version audio</p>
-          <p className="text-muted-foreground">8 min d'écoute</p>
+          <p className="font-mono text-muted-foreground">8 min d'écoute</p>
         </div>
       </motion.div>
     </motion.div>

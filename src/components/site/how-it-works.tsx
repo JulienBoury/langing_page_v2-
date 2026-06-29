@@ -46,7 +46,7 @@ export function HowItWorks() {
   return (
     <section
       id="process"
-      className="relative scroll-mt-20 overflow-hidden bg-muted/40 py-24 sm:py-32"
+      className="surface-soft relative scroll-mt-20 overflow-hidden py-24 sm:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">

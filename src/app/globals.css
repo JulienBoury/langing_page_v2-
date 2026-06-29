@@ -16,7 +16,7 @@
 
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono-jet); /* JetBrains Mono — labels & chiffres */
 
   /* Couleurs de marque AgoraLive */
   --color-brand: var(--brand); /* teal vif (logo "Live") */
@@ -66,8 +66,6 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* Animations */
-  --animate-marquee: marquee 38s linear infinite;
-  --animate-marquee-slow: marquee 60s linear infinite;
   --animate-aurora: aurora 18s ease-in-out infinite alternate;
   --animate-float: float 7s ease-in-out infinite;
   --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -195,6 +193,24 @@
     font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 1;
   }
 
+  /* Surface « douce » teintée — alterne avec le blanc et le sombre (bg-ink)
+     pour rythmer la page. Un voile teal à peine perceptible, plus intentionnel
+     qu'un gris neutre et fidèle à la marque, sans casser le contraste AA. */
+  .surface-soft {
+    background-color: oklch(0.974 0.015 174);
+  }
+
+  /* Micro-label « lab » : JetBrains Mono, capitales, interlettrage large.
+     Signature typographique des eyebrows, pills et kickers de section —
+     l'esthétique « étiquette de paillasse » qui crédibilise le médical. */
+  .label-mono {
+    font-family: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+    font-feature-settings: normal;
+  }
+
   .text-gradient {
     /* Dégradé teal lisible : du teal foncé (--brand-strong) vers un teal moyen.
        L'arrêt clair est plafonné à oklch(0.62) ≈ 3.4:1 sur blanc → réservé au gros
@@ -237,14 +253,10 @@
     -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
     mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
   }
-  .mask-fade-x {
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  }
 }
 
 /* ===== Accessibilité : respect de prefers-reduced-motion =====
-   Neutralise les boucles CSS (marquee, float, pulse-ring, aurora) et les
+   Neutralise les boucles CSS (float, pulse-ring, aurora) et les
    transitions pour les utilisateurs qui demandent moins d'animation.
    (Framer Motion est déjà géré via useReducedMotion côté JS.) */
 @media (prefers-reduced-motion: reduce) {
@@ -259,11 +271,6 @@
 }
 
 /* ===== Keyframes ===== */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 /* N.B. l'aurora n'anime QUE le mouvement (translate/scale) — pas l'opacity,
    sinon elle écraserait les utilitaires opacity-[…] qui dosent l'intensité. */
 @keyframes aurora {

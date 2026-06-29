@@ -1,41 +1,59 @@
-import { Activity } from "lucide-react";
+import Image, { type StaticImageData } from "next/image";
+import orthoplus from "../../../public/logos/orthoplus.png";
+import dentalMonitoring from "../../../public/logos/dental-monitoring.png";
 
 // Congrès & partenaires ayant déjà valorisé leurs contenus avec AgoraLive.
-const partners = [
-  "Top Ortho",
-  "OrthoPlus",
-  "Dental Monitoring",
-  "SFODF",
-  "SFOPA",
+//  • image = logo officiel fourni (niveaux de gris au repos, couleur au survol)
+//  • text  = wordmark de secours tant qu'on n'a pas le fichier logo officiel
+// `heightClass` est dosé par logo pour un équilibre optique (les ratios diffèrent).
+type Partner =
+  | { name: string; kind: "image"; src: StaticImageData; heightClass: string }
+  | { name: string; kind: "text" };
+
+const partners: Partner[] = [
+  { name: "Top Ortho", kind: "text" },
+  { name: "OrthoPlus", kind: "image", src: orthoplus, heightClass: "h-10" },
+  {
+    name: "Dental Monitoring",
+    kind: "image",
+    src: dentalMonitoring,
+    heightClass: "h-[1.45rem]",
+  },
+  { name: "SFODF", kind: "text" },
+  { name: "SFOPA", kind: "text" },
 ];
 
-// Défilement infini sans couture : l'animation translate de -50%, donc la
-// première moitié de la piste doit dépasser la largeur de l'écran. On répète
-// donc la liste assez de fois pour remplir le viewport quelle que soit sa taille.
-const marqueeItems = [...partners, ...partners, ...partners, ...partners];
+const wordmark =
+  "whitespace-nowrap font-heading text-xl font-semibold tracking-tight";
 
 export function TrustedBy() {
   return (
-    <section className="border-b border-border/60 bg-background py-12">
+    <section className="border-y border-border/60 bg-background py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-medium text-muted-foreground">
           Ils valorisent déjà les contenus de leurs congrès avec AgoraLive
         </p>
 
-        <div className="relative mt-8 overflow-hidden mask-fade-x">
-          <div className="flex w-max items-center gap-12 motion-safe:animate-marquee-slow hover:[animation-play-state:paused]">
-            {marqueeItems.map((name, i) => (
-              <div
-                key={`${name}-${i}`}
-                className="flex shrink-0 items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Activity className="size-5" />
-                <span className="whitespace-nowrap font-heading text-lg font-semibold tracking-tight">
-                  {name}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16">
+          {partners.map((p) =>
+            p.kind === "image" ? (
+              <div key={p.name} className="group flex items-center">
+                <Image
+                  src={p.src}
+                  alt={p.name}
+                  className={`${p.heightClass} w-auto opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0`}
+                />
+              </div>
+            ) : (
+              <div key={p.name} className="flex items-center">
+                <span
+                  className={`${wordmark} select-none text-muted-foreground transition-colors duration-300 hover:text-foreground`}
+                >
+                  {p.name}
                 </span>
               </div>
-            ))}
-          </div>
+            )
+          )}
         </div>
       </div>
     </section>
