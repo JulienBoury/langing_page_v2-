@@ -36,7 +36,7 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         solid
           ? "border-b border-white/10 bg-ink/85 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+          : "border-b border-border/40 bg-white/40 backdrop-blur-md"
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
@@ -88,7 +88,7 @@ export function Navbar() {
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
           className={cn(
-            "inline-flex size-10 items-center justify-center rounded-lg transition-colors lg:hidden",
+            "inline-flex size-11 items-center justify-center rounded-lg transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 lg:hidden",
             solid
               ? "text-white hover:bg-white/10"
               : "text-foreground hover:bg-foreground/5"

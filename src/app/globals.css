@@ -77,6 +77,8 @@
   --radius: 0.8rem;
 
   /* ===== IDENTITÉ DE MARQUE AgoraLive (hex officiels) ===== */
+  /* Règle d'usage (contraste AA) : --brand (vif) = aplats / halo / gros chiffres
+     sur fond SOMBRE uniquement. --brand-strong = tout texte/icône sur fond CLAIR. */
   --brand: #24ebc3; /* teal vif — "Live" du logo */
   --brand-strong: oklch(0.5 0.12 174); /* teal foncé — texte/accents, même teinte (174) que le bouton */
   --brand-2: oklch(0.78 0.15 174); /* teal — gradient/survol, même teinte que le bouton */
@@ -175,8 +177,10 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4 {
-    font-family: var(--font-heading), var(--font-sans), sans-serif;
-    letter-spacing: -0.02em;
+    font-family: var(--font-heading), Georgia, serif;
+    letter-spacing: -0.015em;
+    /* Fraunces sobre par défaut (sans alternates wonky) ; le hero active WONK. */
+    font-variation-settings: "SOFT" 0, "WONK" 0;
   }
   ::selection {
     background: color-mix(in oklch, var(--brand) 30%, transparent);
@@ -185,15 +189,32 @@
 
 /* ===== Utilitaires de marque ===== */
 @layer utilities {
+  /* Titre hero : Fraunces en mode display — grande taille optique + caractère
+     (WONK activé) pour un titre éditorial signé, réservé au seul hero. */
+  .heading-display {
+    font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 1;
+  }
+
   .text-gradient {
+    /* Dégradé teal lisible : du teal foncé (--brand-strong) vers un teal moyen.
+       L'arrêt clair est plafonné à oklch(0.62) ≈ 3.4:1 sur blanc → réservé au gros
+       texte display (titres), qui tolère le seuil AA "large text" (3:1). */
     background-image: linear-gradient(
       100deg,
       var(--brand-strong) 0%,
-      color-mix(in oklch, var(--brand) 45%, var(--brand-strong)) 100%
+      oklch(0.62 0.14 174) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  /* En mode sombre, on remonte vers le teal clair pour garder le contraste. */
+  .dark .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand-strong) 0%,
+      var(--brand-2) 100%
+    );
   }
 
   .bg-brand-gradient {
@@ -222,16 +243,33 @@
   }
 }
 
+/* ===== Accessibilité : respect de prefers-reduced-motion =====
+   Neutralise les boucles CSS (marquee, float, pulse-ring, aurora) et les
+   transitions pour les utilisateurs qui demandent moins d'animation.
+   (Framer Motion est déjà géré via useReducedMotion côté JS.) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ===== Keyframes ===== */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
+/* N.B. l'aurora n'anime QUE le mouvement (translate/scale) — pas l'opacity,
+   sinon elle écraserait les utilitaires opacity-[…] qui dosent l'intensité. */
 @keyframes aurora {
-  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
-  50% { transform: translate3d(4%, -3%, 0) scale(1.15); opacity: 1; }
-  100% { transform: translate3d(-3%, 4%, 0) scale(1.05); opacity: 0.9; }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.15); }
+  100% { transform: translate3d(-3%, 4%, 0) scale(1.05); }
 }
 
 @keyframes float {

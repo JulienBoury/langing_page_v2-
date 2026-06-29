@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { Fragment } from "react";
 import heroArticle from "../../../public/hero-article.jpg";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import {
   ArrowRight,
   Eye,
@@ -12,17 +13,44 @@ import {
   Languages,
   FileText,
 } from "lucide-react";
+import { Aurora } from "./aurora";
+import { Waveform } from "./waveform";
 import { CtaLink } from "./cta-button";
 import { siteConfig } from "@/lib/site";
 
+const headlineWords: { t: string; grad?: boolean }[] = [
+  { t: "Valorisons" },
+  { t: "votre" },
+  { t: "congrès", grad: true },
+  { t: "et" },
+  { t: "vos" },
+  { t: "sponsors", grad: true },
+];
+
+const headlineContainer: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.04 } },
+};
+
 export function Hero() {
   const reduce = useReducedMotion();
+
+  const headlineWord: Variants = {
+    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 14 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] },
+    },
+  };
 
   return (
     <section
       id="top"
       className="relative isolate overflow-hidden bg-background text-foreground"
     >
+      <Aurora variant="light" />
+
       {/* ---------- Contenu ---------- */}
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-24 pt-32 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-32 lg:pt-40 lg:px-8">
         {/* Colonne texte */}
@@ -32,7 +60,7 @@ export function Hero() {
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-muted"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-brand-strong" />
@@ -42,13 +70,23 @@ export function Hero() {
           </motion.a>
 
           <motion.h1
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.06 }}
-            className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            variants={headlineContainer}
+            initial="hidden"
+            animate="show"
+            className="heading-display mt-6 text-balance text-4xl font-bold leading-[1.04] tracking-[-0.01em] text-foreground sm:text-5xl lg:text-6xl"
           >
-            Valorisons votre <span className="text-brand">congrès</span> et vos{" "}
-            <span className="text-brand">sponsors</span>
+            {headlineWords.map((w, i) => (
+              <Fragment key={i}>
+                <motion.span variants={headlineWord} className="inline-block">
+                  {w.grad ? (
+                    <span className="text-gradient">{w.t}</span>
+                  ) : (
+                    w.t
+                  )}
+                </motion.span>
+                {i < headlineWords.length - 1 ? " " : null}
+              </Fragment>
+            ))}
           </motion.h1>
 
           <motion.p
@@ -163,10 +201,8 @@ function HeroVisual() {
               ES
             </span>
           </div>
-          <button className="group/play absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-black/35 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/50">
-            <span className="inline-flex size-6 items-center justify-center rounded-full bg-white text-ink">
-              <Headphones className="size-3" />
-            </span>
+          <button className="group/play absolute left-4 bottom-4 inline-flex min-h-11 items-center gap-2.5 rounded-full bg-black/35 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/50 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
+            <Waveform className="text-brand" bars={4} />
             Écouter l'article
           </button>
         </div>

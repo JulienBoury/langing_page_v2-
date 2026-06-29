@@ -1,20 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Aurora } from "./aurora";
 
-// Chiffres placeholder — à remplacer par vos vraies métriques.
+// ⚠️ Chiffres placeholder — à remplacer par vos vraies métriques défendables
+// (congrès valorisés, professionnels touchés, références PubMed croisées…).
+// Le dernier item est volontairement un % de process (vrai, vérifiable dans la
+// FAQ) plutôt qu'un décompte de partenaires qui signalerait la petitesse.
 const stats = [
   { to: 60, suffix: "", label: "Conférences valorisées" },
   { to: 1500, suffix: "", label: "Professionnels de santé touchés" },
-  { to: 1, suffix: "", label: "Société savante partenaire" },
+  { to: 100, suffix: " %", label: "Articles validés par l'intervenant" },
 ];
 
 export function Stats() {
   return (
-    <section className="relative overflow-hidden bg-ink py-16 text-white sm:py-20">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 size-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-gray opacity-[0.10] blur-[120px]" />
-      </div>
+    <section className="relative isolate overflow-hidden bg-ink py-16 text-white sm:py-20">
+      <Aurora variant="dark" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {stats.map((s) => (

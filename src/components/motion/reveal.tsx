@@ -10,8 +10,8 @@ type RevealProps = {
   delay?: number;
   /** Décalage vertical initial. */
   y?: number;
-  /** Si `true`, l'animation ne joue qu'une fois. Par défaut elle se rejoue
-   *  à chaque fois que le bloc revient dans le champ de vision. */
+  /** Si `true` (défaut), l'animation ne joue qu'une fois. Passer `false` pour
+   *  la rejouer à chaque retour dans le champ de vision. */
   once?: boolean;
 };
 
@@ -24,7 +24,7 @@ export function Reveal({
   className,
   delay = 0,
   y = 22,
-  once = false,
+  once = true,
 }: RevealProps) {
   const reduce = useReducedMotion();
 
@@ -34,7 +34,7 @@ export function Reveal({
       initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 0.61, 0.36, 1] }}
+      transition={{ duration: 0.35, delay, ease: [0.22, 0.61, 0.36, 1] }}
     >
       {children}
     </motion.div>
@@ -46,7 +46,7 @@ export function StaggerGroup({
   children,
   className,
   delayChildren = 0.05,
-  stagger = 0.08,
+  stagger = 0.06,
 }: {
   children: ReactNode;
   className?: string;
@@ -65,7 +65,7 @@ export function StaggerGroup({
       variants={variants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, margin: "-80px" }}
+      viewport={{ once: true, margin: "-80px" }}
     >
       {children}
     </motion.div>
@@ -87,7 +87,7 @@ export function StaggerItem({
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+      transition: { duration: 0.35, ease: [0.22, 0.61, 0.36, 1] },
     },
   };
   return (

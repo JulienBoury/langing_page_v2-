@@ -2,6 +2,7 @@
 
 import { Check, TrendingUp, Eye, Clock, MousePointerClick } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
+import { Eyebrow } from "./eyebrow";
 
 const benefits = [
   {
@@ -29,9 +30,7 @@ export function Sponsors() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Texte */}
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wider text-brand">
-              Pour les sponsors & l'industrie
-            </p>
+            <Eyebrow align="start">Pour les sponsors & l'industrie</Eyebrow>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               Sponsorisez du savoir, pas du bruit.
             </h2>
@@ -64,9 +63,14 @@ export function Sponsors() {
             <div className="rounded-3xl border border-border bg-card p-6 shadow-xl sm:p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                    Performance du contenu
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      Performance du contenu
+                    </p>
+                    <span className="rounded-full bg-brand-accent/25 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brand-strong">
+                      Exemple
+                    </span>
+                  </div>
                   <p className="mt-1 font-heading text-lg font-bold">
                     Sponsorisé par{" "}
                     <span className="text-gradient">Votre Marque</span>

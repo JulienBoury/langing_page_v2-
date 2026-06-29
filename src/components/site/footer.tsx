@@ -48,7 +48,7 @@ function SocialLink({
     <a
       href={href}
       aria-label={label}
-      className="inline-flex size-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-muted hover:text-foreground"
+      className="inline-flex size-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-muted hover:text-foreground active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       {children}
     </a>

@@ -2,6 +2,7 @@
 
 import { Camera, FileSearch, CheckCircle2, Rocket, type LucideIcon } from "lucide-react";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
+import { Eyebrow } from "./eyebrow";
 
 type Step = {
   icon: LucideIcon;
@@ -49,9 +50,7 @@ export function HowItWorks() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">
-            Comment ça marche
-          </p>
+          <Eyebrow>Comment ça marche</Eyebrow>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             De la scène à l'article publié, en 4 étapes.
           </h2>

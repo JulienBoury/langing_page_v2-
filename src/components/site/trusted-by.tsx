@@ -23,7 +23,7 @@ export function TrustedBy() {
         </p>
 
         <div className="relative mt-8 overflow-hidden mask-fade-x">
-          <div className="flex w-max animate-marquee-slow items-center gap-12 hover:[animation-play-state:paused]">
+          <div className="flex w-max items-center gap-12 motion-safe:animate-marquee-slow hover:[animation-play-state:paused]">
             {marqueeItems.map((name, i) => (
               <div
                 key={`${name}-${i}`}

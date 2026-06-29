@@ -36,7 +36,7 @@ export function CtaLink({
     <a
       href={href}
       className={cn(
-        "group inline-flex items-center justify-center gap-2 rounded-xl font-medium tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "group inline-flex items-center justify-center gap-2 rounded-xl font-medium tracking-tight transition-all duration-200 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         sizes[size],
         variants[variant],
         className

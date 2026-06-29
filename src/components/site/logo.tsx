@@ -56,6 +56,27 @@ export function Logo({
   );
 }
 
+/**
+ * Motif « barres » monochrome (currentColor) — décline le pictogramme du logo
+ * en tick d'égaliseur réutilisable (eyebrows de section, watermarks…).
+ * Prend la couleur du texte parent : mettre `text-brand-strong`, `text-white`…
+ */
+export function BarsIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="130 90 730 880"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("block h-4 w-auto", className)}
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <rect x="159.89" y="313.19" width="158.34" height="624.7" rx="50.19" ry="50.19" />
+      <rect x="415.6" y="114.21" width="158.34" height="823.6" rx="50.19" ry="50.19" />
+      <rect x="671.39" y="206.67" width="158.34" height="731.15" rx="50.19" ry="50.19" />
+    </svg>
+  );
+}
+
 /** Pictogramme seul (3 barres). */
 export function LogoMark({ className }: { className?: string }) {
   return (

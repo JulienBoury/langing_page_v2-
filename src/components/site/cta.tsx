@@ -2,6 +2,7 @@
 
 import { ArrowRight, Mail } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
+import { Aurora } from "./aurora";
 import { CtaLink } from "./cta-button";
 import { siteConfig } from "@/lib/site";
 
@@ -11,13 +12,9 @@ export function Cta() {
       id="contact"
       className="relative isolate scroll-mt-20 overflow-hidden bg-ink py-24 text-white sm:py-32"
     >
-      {/* Lueur douce (statique) */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/4 top-1/4 size-[34rem] -translate-x-1/2 rounded-full bg-brand-gray opacity-[0.14] blur-[120px]" />
-        <div className="absolute right-1/4 bottom-0 size-[30rem] rounded-full bg-brand-gray opacity-10 blur-[120px]" />
-      </div>
+      <Aurora variant="dark" />
 
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <Reveal>
           <h2 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Prêt à donner une seconde vie à vos congrès ?

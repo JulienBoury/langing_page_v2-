@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, Geist_Mono } from "next/font/google";
+import { Inter, Fraunces, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Navbar } from "@/components/site/navbar";
@@ -11,10 +11,13 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Fraunces — serif éditorial (titres). Police variable : on charge les axes
+// opsz (optique), SOFT (douceur) et WONK (caractère) pour piloter le hero.
+const fraunces = Fraunces({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const geistMono = Geist_Mono({
@@ -66,12 +69,20 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand/60"
+        >
+          Aller au contenu
+        </a>
         <SmoothScroll>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1 scroll-mt-16">
+            {children}
+          </main>
           <Footer />
         </SmoothScroll>
       </body>
