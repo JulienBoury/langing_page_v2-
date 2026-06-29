@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
   basePath: isGithubPages ? `/${repo}` : undefined,
   assetPrefix: isGithubPages ? `/${repo}/` : undefined,
   trailingSlash: true, // routes servies en /chemin/index.html (hébergement statique)
+  // Exposé au client : pour préfixer à la main les liens vers des fichiers
+  // STATIQUES de /public (ex. l'article exemple). basePath n'est PAS appliqué
+  // automatiquement aux <a> ni aux assets statiques (cf. doc next basePath).
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGithubPages ? `/${repo}` : "",
+  },
 };
 
 export default nextConfig;

@@ -1,8 +1,22 @@
 "use client";
 
-import { Check, TrendingUp, Eye, Clock, MousePointerClick } from "lucide-react";
+import {
+  Check,
+  TrendingUp,
+  Eye,
+  Clock,
+  MousePointerClick,
+  FileText,
+  ArrowUpRight,
+} from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Eyebrow } from "./eyebrow";
+import { CtaLink } from "./cta-button";
+
+// Lien vers l'article sponsorisé exemple (fichier statique de /public).
+// On préfixe à la main le basePath car il n'est pas appliqué aux <a> ni aux
+// assets statiques (cf. next.config + doc next basePath).
+const sponsoredExampleHref = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/exemples/article-orthoplus.html`;
 
 const benefits = [
   {
@@ -36,8 +50,9 @@ export function Sponsors() {
             </h2>
             <p className="mt-5 text-pretty text-lg text-muted-foreground">
               Associez votre marque à un contenu scientifique de référence, lu et
-              partagé par votre cœur de cible. AgoraLive produit aussi des revues
-              de littérature sur-mesure, vérifiées source par source.
+              partagé par votre cœur de cible. AgoraLive produit des articles
+              sponsorisés sur-mesure, vérifiés source par source, et les intègre
+              au journal.
             </p>
 
             <ul className="mt-8 space-y-4">
@@ -55,6 +70,19 @@ export function Sponsors() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-9">
+              <CtaLink
+                href={sponsoredExampleHref}
+                variant="primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FileText className="size-4" />
+                Découvrir un exemple d&apos;article sponsorisé
+                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </CtaLink>
+            </div>
           </Reveal>
 
           {/* Visuel : panneau de performance */}
