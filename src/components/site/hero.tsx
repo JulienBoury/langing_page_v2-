@@ -12,9 +12,9 @@ import {
   Sparkles,
   Languages,
   FileText,
+  Play,
 } from "lucide-react";
 import { Aurora } from "./aurora";
-import { Waveform } from "./waveform";
 import { CtaLink } from "./cta-button";
 import { siteConfig } from "@/lib/site";
 import { useT } from "@/lib/i18n";
@@ -197,7 +197,7 @@ function HeroVisual() {
             </span>
           </div>
           <button className="group/play absolute left-4 bottom-4 inline-flex min-h-11 items-center gap-2.5 rounded-full bg-black/35 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/50 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
-            <Waveform className="text-brand" bars={4} />
+            <Play className="size-3 fill-brand text-brand" />
             {t.hero.card.listen}
           </button>
         </div>
