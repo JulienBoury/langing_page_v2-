@@ -20,7 +20,7 @@ export function Faq() {
         <Reveal delay={0.05} className="mt-12 divide-y divide-border rounded-2xl border border-border bg-card">
           {t.faq.items.map((item) => (
             <details key={item.q} className="group px-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg py-5 text-left font-semibold tracking-tight transition-colors hover:text-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-4 focus-visible:ring-offset-card [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg py-5 text-left font-semibold tracking-tight transition-colors hover:text-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4 focus-visible:ring-offset-card [&::-webkit-details-marker]:hidden">
                 {item.q}
                 <ChevronDown className="size-5 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-180" />
               </summary>

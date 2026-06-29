@@ -180,7 +180,7 @@
     font-family: var(--font-heading), Georgia, serif;
     letter-spacing: -0.015em;
     /* Fraunces sobre par défaut (sans alternates wonky) ; le hero active WONK. */
-    font-variation-settings: "SOFT" 0, "WONK" 0;
+    font-variation-settings: "WONK" 0;
   }
   ::selection {
     background: color-mix(in oklch, var(--brand) 30%, transparent);
@@ -192,7 +192,7 @@
   /* Titre hero : Fraunces en mode display — grande taille optique + caractère
      (WONK activé) pour un titre éditorial signé, réservé au seul hero. */
   .heading-display {
-    font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 1;
+    font-variation-settings: "opsz" 144, "WONK" 1;
   }
 
   /* Surface « douce » teintée — alterne avec le blanc et le sombre (bg-ink)

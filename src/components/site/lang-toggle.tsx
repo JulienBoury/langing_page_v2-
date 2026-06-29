@@ -39,7 +39,7 @@ export function LangToggle({
             aria-pressed={active}
             lang={l}
             className={cn(
-              "inline-flex h-8 min-w-9 items-center justify-center rounded-full px-2.5 text-xs font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+              "inline-flex h-8 min-w-9 items-center justify-center rounded-full px-2.5 text-xs font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong",
               active
                 ? "bg-brand text-ink shadow-sm"
                 : solid

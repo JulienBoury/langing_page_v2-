@@ -53,7 +53,7 @@ export function Hero() {
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-brand-strong" />
@@ -146,7 +146,11 @@ function HeroVisual() {
   const reduce = useReducedMotion();
 
   return (
+    // Maquette purement décorative : `inert` la retire de l'ordre de tabulation
+    // et de l'arbre d'accessibilité (faux bouton « Écouter », titre h3 qui
+    // casserait la hiérarchie des titres, etc.).
     <motion.div
+      inert
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}

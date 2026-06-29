@@ -31,12 +31,10 @@ export function Footer() {
             </SocialLink>
           </div>
 
-          <p className="mt-10 text-center text-sm text-muted-foreground">
+          <p className="mt-10 border-t border-border pt-8 text-sm text-muted-foreground">
             {t.footer.rights}
           </p>
         </div>
-
-        <div className="mt-8 border-t border-border" />
       </div>
     </footer>
   );
@@ -60,7 +58,7 @@ function SocialLink({
       aria-label={label}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className="inline-flex size-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-muted hover:text-foreground active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="inline-flex size-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-muted hover:text-foreground active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       {children}
     </a>

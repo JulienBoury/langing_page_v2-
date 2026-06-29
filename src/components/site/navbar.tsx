@@ -78,7 +78,7 @@ export function Navbar() {
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+                  "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong",
                   solid
                     ? isActive
                       ? "text-white"
@@ -129,7 +129,7 @@ export function Navbar() {
             aria-label={open ? t.a11y.closeMenu : t.a11y.openMenu}
             aria-expanded={open}
             className={cn(
-              "inline-flex size-11 items-center justify-center rounded-lg transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+              "inline-flex size-11 items-center justify-center rounded-lg transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong",
               solid
                 ? "text-white hover:bg-white/10"
                 : "text-foreground hover:bg-foreground/5"
@@ -140,8 +140,10 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile panel */}
+      {/* Mobile panel — `inert` quand fermé : retiré de l'ordre de tabulation
+          et de l'arbre d'accessibilité (sinon liens focalisables hors écran). */}
       <div
+        inert={!open}
         className={cn(
           "lg:hidden overflow-hidden border-t border-white/10 bg-ink/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 ease-out",
           open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
@@ -159,7 +161,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "rounded-lg px-3 py-3 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+                  "rounded-lg px-3 py-3 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong",
                   isActive
                     ? "bg-white/10 text-brand"
                     : "text-white hover:bg-white/10"
