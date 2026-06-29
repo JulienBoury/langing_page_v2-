@@ -1,8 +1,12 @@
+"use client";
+
 import { Mail } from "lucide-react";
+import { useT } from "@/lib/i18n";
 import { Logo } from "./logo";
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
+  const t = useT();
   return (
     <footer className="relative border-t border-border bg-background text-foreground">
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -10,7 +14,7 @@ export function Footer() {
           {/* Logo normal (Agora navy + Live teal) sur fond clair */}
           <Logo className="text-foreground" />
           <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-            {siteConfig.tagline}
+            {t.footer.tagline}
           </p>
           <div className="mt-6 flex items-center gap-3">
             <SocialLink href="#" label="LinkedIn">
@@ -25,7 +29,7 @@ export function Footer() {
           </div>
 
           <p className="mt-10 text-center text-sm text-muted-foreground">
-            © 2026 AgoraLive. Tous droits réservés.
+            {t.footer.rights}
           </p>
         </div>
 

@@ -1,4 +1,7 @@
+"use client";
+
 import Image, { type StaticImageData } from "next/image";
+import { useT } from "@/lib/i18n";
 import orthoplus from "../../../public/logos/orthoplus.png";
 import dentalMonitoring from "../../../public/logos/dental-monitoring.png";
 import sfodf from "../../../public/logos/sfodf.png";
@@ -51,11 +54,12 @@ function LogoGroup() {
 }
 
 export function TrustedBy() {
+  const t = useT();
   return (
     <section className="border-y border-border/60 bg-background py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-medium text-muted-foreground">
-          Ils valorisent déjà les contenus de leurs congrès avec AgoraLive
+          {t.trustedBy.heading}
         </p>
       </div>
 

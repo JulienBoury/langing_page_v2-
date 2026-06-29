@@ -4,6 +4,8 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
+import { SkipLink } from "@/components/site/skip-link";
+import { LanguageProvider } from "@/lib/i18n";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -74,19 +76,16 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand/60"
-        >
-          Aller au contenu
-        </a>
-        <SmoothScroll>
-          <Navbar />
-          <main id="main" className="flex-1 scroll-mt-16">
-            {children}
-          </main>
-          <Footer />
-        </SmoothScroll>
+        <LanguageProvider>
+          <SkipLink />
+          <SmoothScroll>
+            <Navbar />
+            <main id="main" className="flex-1 scroll-mt-16">
+              {children}
+            </main>
+            <Footer />
+          </SmoothScroll>
+        </LanguageProvider>
       </body>
     </html>
   );

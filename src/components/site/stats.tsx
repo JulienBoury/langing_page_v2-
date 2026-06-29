@@ -1,28 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/lib/i18n";
 import { Aurora } from "./aurora";
 
-// ⚠️ Chiffres placeholder — à remplacer par vos vraies métriques défendables
-// (congrès valorisés, professionnels touchés, références PubMed croisées…).
-// Le dernier item est volontairement un % de process (vrai, vérifiable dans la
-// FAQ) plutôt qu'un décompte de partenaires qui signalerait la petitesse.
-const stats = [
-  { to: 60, suffix: "", label: "Conférences valorisées" },
-  { to: 1500, suffix: "", label: "Professionnels de santé touchés" },
-  { to: 100, suffix: " %", label: "Articles validés par l'intervenant" },
-];
-
+// ⚠️ Chiffres placeholder — à remplacer par vos vraies métriques défendables.
+// Les libellés (et le suffixe « % » avec/sans espace selon la langue) viennent
+// du dictionnaire i18n ; seules les valeurs numériques sont ici.
 export function Stats() {
+  const { lang, t } = useLanguage();
+  const locale = lang === "fr" ? "fr-FR" : "en-US";
+
   return (
     <section className="relative isolate overflow-hidden bg-ink py-16 text-white sm:py-20">
       <Aurora variant="dark" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
+          {t.stats.items.map((s, i) => (
+            <div key={i} className="text-center">
               <p className="font-mono text-4xl font-bold tracking-tight text-brand tabular-nums sm:text-5xl">
-                <CountUp to={s.to} suffix={s.suffix} />
+                <CountUp to={s.value} suffix={s.suffix} locale={locale} />
               </p>
               <p className="mt-3 text-sm text-white/75 sm:text-base">
                 {s.label}
@@ -43,10 +40,12 @@ function CountUp({
   to,
   duration = 1700,
   suffix = "",
+  locale = "fr-FR",
 }: {
   to: number;
   duration?: number;
   suffix?: string;
+  locale?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -85,7 +84,7 @@ function CountUp({
     return () => io.disconnect();
   }, [to, duration]);
 
-  const formatted = Math.round(value).toLocaleString("fr-FR");
+  const formatted = Math.round(value).toLocaleString(locale);
 
   return (
     <span ref={ref}>

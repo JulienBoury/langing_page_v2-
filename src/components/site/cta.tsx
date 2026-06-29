@@ -2,11 +2,13 @@
 
 import { ArrowRight, Mail } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
+import { useT } from "@/lib/i18n";
 import { Aurora } from "./aurora";
 import { CtaLink } from "./cta-button";
 import { siteConfig } from "@/lib/site";
 
 export function Cta() {
+  const t = useT();
   return (
     <section
       id="contact"
@@ -17,16 +19,15 @@ export function Cta() {
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <Reveal>
           <h2 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Prêt à donner une seconde vie à vos congrès ?
+            {t.cta.heading}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg text-white/70">
-            Réservez une démo de 10 minutes. On vous montre ce qu'AgoraLive
-            peut produire.
+            {t.cta.subhead}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <CtaLink href={`mailto:${siteConfig.email}`} variant="light" size="lg">
-              Demander un devis
+              {t.actions.requestQuote}
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </CtaLink>
             <CtaLink
@@ -39,9 +40,7 @@ export function Cta() {
             </CtaLink>
           </div>
 
-          <p className="mt-6 text-sm text-white/65">
-            Démo personnalisée · Réponse sous 24 h · Conçu pour tous les congrès
-          </p>
+          <p className="mt-6 text-sm text-white/65">{t.cta.note}</p>
         </Reveal>
       </div>
     </section>

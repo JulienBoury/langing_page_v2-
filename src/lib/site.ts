@@ -1,22 +1,26 @@
+import type { Dictionary } from "./i18n/dictionary";
+
 // Exemple public : magazine SFOPA 2026 (article réel hébergé sur l'app).
 const EXAMPLE_URL = "https://app.agoralive.ai/magazine/sfopa2026";
 
+// Le libellé affiché de chaque entrée de nav vient du dictionnaire i18n
+// (`t.nav[key]`) — ici on ne garde que la structure (clé + destination).
+type NavConfig = { key: keyof Dictionary["nav"]; href: string };
+
 export const siteConfig = {
   name: "AgoraLive",
-  tagline:
-    "Vos congrès, transformés en articles scientifiques interactifs, vérifiés, traduits et disponibles en audio.",
   email: "contact@agoralive.fr",
   exampleUrl: EXAMPLE_URL,
   nav: [
-    { label: "Comment ça marche", href: "#process" },
-    { label: "Pour les congrès", href: "#congres" },
-    { label: "Pour les sponsors", href: "#sponsors" },
-    { label: "Exemples", href: EXAMPLE_URL },
-    { label: "FAQ", href: "#faq" },
-  ],
+    { key: "howItWorks", href: "#process" },
+    { key: "forCongresses", href: "#congres" },
+    { key: "forSponsors", href: "#sponsors" },
+    { key: "examples", href: EXAMPLE_URL },
+    { key: "faq", href: "#faq" },
+  ] satisfies NavConfig[],
   cta: {
-    primary: { label: "Demander un devis", href: "#contact" },
-    secondary: { label: "Voir un exemple", href: EXAMPLE_URL },
+    primary: { href: "#contact" },
+    secondary: { href: EXAMPLE_URL },
   },
 } as const;
 

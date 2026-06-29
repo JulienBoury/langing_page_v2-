@@ -17,15 +17,7 @@ import { Aurora } from "./aurora";
 import { Waveform } from "./waveform";
 import { CtaLink } from "./cta-button";
 import { siteConfig } from "@/lib/site";
-
-const headlineWords: { t: string; grad?: boolean }[] = [
-  { t: "Valorisons" },
-  { t: "votre" },
-  { t: "congrès", grad: true },
-  { t: "et" },
-  { t: "vos" },
-  { t: "sponsors", grad: true },
-];
+import { useT } from "@/lib/i18n";
 
 const headlineContainer: Variants = {
   hidden: {},
@@ -33,6 +25,7 @@ const headlineContainer: Variants = {
 };
 
 export function Hero() {
+  const t = useT();
   const reduce = useReducedMotion();
 
   const headlineWord: Variants = {
@@ -66,7 +59,7 @@ export function Hero() {
               <span className="absolute inline-flex size-full animate-pulse-ring rounded-full bg-brand-strong" />
               <span className="relative inline-flex size-2 rounded-full bg-brand-strong" />
             </span>
-            Pour les sociétés savantes & congrès médicaux
+            {t.hero.badge}
           </motion.a>
 
           <motion.h1
@@ -75,7 +68,7 @@ export function Hero() {
             animate="show"
             className="heading-display mt-6 text-balance text-4xl font-bold leading-[1.04] tracking-[-0.01em] text-foreground sm:text-5xl lg:text-6xl"
           >
-            {headlineWords.map((w, i) => (
+            {t.hero.headline.map((w, i) => (
               <Fragment key={i}>
                 <motion.span variants={headlineWord} className="inline-block">
                   {w.grad ? (
@@ -84,7 +77,7 @@ export function Hero() {
                     w.t
                   )}
                 </motion.span>
-                {i < headlineWords.length - 1 ? " " : null}
+                {i < t.hero.headline.length - 1 ? " " : null}
               </Fragment>
             ))}
           </motion.h1>
@@ -95,10 +88,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.14 }}
             className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
           >
-            Notre équipe capte les conférences de vos congrès et les transforme
-            en articles scientifiques : interactifs, traduits dans toutes les
-            langues et disponibles en version audio, diffusés à tous vos
-            congressistes en direct.
+            {t.hero.subhead}
           </motion.p>
 
           <motion.div
@@ -108,7 +98,7 @@ export function Hero() {
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
             <CtaLink href="#contact" size="lg">
-              Demander un devis
+              {t.actions.requestQuote}
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </CtaLink>
             <CtaLink
@@ -119,7 +109,7 @@ export function Hero() {
               rel="noopener noreferrer"
             >
               <Eye className="size-4" />
-              Voir un exemple
+              {t.actions.seeExample}
             </CtaLink>
           </motion.div>
 
@@ -131,15 +121,15 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2">
               <BadgeCheck className="size-4 text-brand-strong" />
-              Vérifié par la littérature (PubMed)
+              {t.hero.trust.pubmed}
             </span>
             <span className="inline-flex items-center gap-2">
               <Languages className="size-4 text-brand-strong" />
-              Traduit & version audio
+              {t.hero.trust.audio}
             </span>
             <span className="inline-flex items-center gap-2">
               <Sparkles className="size-4 text-brand-strong" />
-              Aux couleurs de votre congrès
+              {t.hero.trust.branded}
             </span>
           </motion.div>
         </div>
@@ -152,6 +142,7 @@ export function Hero() {
 }
 
 function HeroVisual() {
+  const t = useT();
   const reduce = useReducedMotion();
 
   return (
@@ -170,10 +161,10 @@ function HeroVisual() {
         <div className="flex items-center justify-between border-b border-border bg-muted/40 px-4 py-3">
           <span className="label-mono inline-flex items-center gap-2 text-[10px] text-muted-foreground">
             <span className="size-1.5 rounded-full bg-brand-strong" />
-            Article AgoraLive
+            {t.hero.card.source}
           </span>
           <span className="label-mono inline-flex items-center gap-1.5 rounded-full bg-brand-accent/25 px-2.5 py-1 text-[10px] text-brand-strong">
-            Exemple
+            {t.hero.card.example}
           </span>
         </div>
 
@@ -181,7 +172,7 @@ function HeroVisual() {
         <div className="relative aspect-[16/8] bg-muted">
           <Image
             src={heroArticle}
-            alt="Conférencière présentant lors d'un congrès médical"
+            alt={t.hero.card.imageAlt}
             fill
             sizes="(max-width: 1024px) 100vw, 440px"
             priority
@@ -203,7 +194,7 @@ function HeroVisual() {
           </div>
           <button className="group/play absolute left-4 bottom-4 inline-flex min-h-11 items-center gap-2.5 rounded-full bg-black/35 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur transition-colors hover:bg-black/50 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80">
             <Waveform className="text-brand" bars={4} />
-            Écouter l'article
+            {t.hero.card.listen}
           </button>
         </div>
 
@@ -211,18 +202,18 @@ function HeroVisual() {
         <div className="space-y-4 p-5">
           <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
             <span className="inline-flex items-center gap-1 rounded-full bg-brand-accent/25 px-2 py-0.5 font-medium text-brand-strong">
-              <BadgeCheck className="size-3" /> Vérifié
+              <BadgeCheck className="size-3" /> {t.hero.card.verified}
             </span>
-            <span className="font-mono">6 min de lecture</span>
+            <span className="font-mono">{t.hero.card.readTime}</span>
           </div>
           <h3 className="text-balance text-base font-semibold leading-snug text-foreground">
-            Aligneurs et contrôle de l'ancrage : ce que disent les données
+            {t.hero.card.title}
           </h3>
           <div className="flex items-center gap-2.5">
             <span className="size-7 rounded-full bg-brand-gradient" />
             <div className="text-[11px] leading-tight text-muted-foreground">
-              <p className="font-medium text-foreground">Dr. Camille</p>
-              <p>Orthodontiste · CHU de Paris</p>
+              <p className="font-medium text-foreground">{t.hero.card.author}</p>
+              <p>{t.hero.card.authorRole}</p>
             </div>
           </div>
           <div className="space-y-2 pt-1">
@@ -236,10 +227,10 @@ function HeroVisual() {
               <span className="inline-flex size-6 items-center justify-center rounded-lg bg-brand-accent/25 text-brand-strong">
                 <BadgeCheck className="size-3.5" />
               </span>
-              Quiz · 5 questions
+              {t.hero.card.quiz}
             </div>
             <span className="rounded-md bg-brand-accent/25 px-2 py-0.5 text-[10px] font-medium text-brand-strong">
-              Commencer
+              {t.hero.card.start}
             </span>
           </div>
         </div>
@@ -253,8 +244,10 @@ function HeroVisual() {
       >
         <FileText className="size-4 text-brand-strong" />
         <div className="text-[11px] leading-tight">
-          <p className="font-semibold text-foreground">12 références</p>
-          <p className="label-mono text-[9px] text-muted-foreground">croisées PubMed</p>
+          <p className="font-semibold text-foreground">{t.hero.card.refsValue}</p>
+          <p className="label-mono text-[9px] text-muted-foreground">
+            {t.hero.card.refsLabel}
+          </p>
         </div>
       </motion.div>
 
@@ -265,8 +258,8 @@ function HeroVisual() {
       >
         <Headphones className="size-4 text-brand-strong" />
         <div className="text-[11px] leading-tight">
-          <p className="font-semibold text-foreground">Version audio</p>
-          <p className="font-mono text-muted-foreground">8 min d'écoute</p>
+          <p className="font-semibold text-foreground">{t.hero.card.audioTitle}</p>
+          <p className="font-mono text-muted-foreground">{t.hero.card.audioSub}</p>
         </div>
       </motion.div>
     </motion.div>

@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";
+import { useT } from "@/lib/i18n";
 import { Logo } from "./logo";
 import { CtaLink } from "./cta-button";
+import { LangToggle } from "./lang-toggle";
 
 export function Navbar() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -46,7 +49,7 @@ export function Navbar() {
             "transition-colors",
             solid ? "text-white" : "text-foreground"
           )}
-          aria-label="AgoraLive — accueil"
+          aria-label={t.a11y.home}
         >
           <Logo />
         </a>
@@ -65,37 +68,41 @@ export function Navbar() {
                   : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
               )}
             >
-              {item.label}
+              {t.nav[item.key]}
             </a>
           ))}
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <LangToggle solid={solid} />
           <CtaLink
             href={siteConfig.cta.primary.href}
             size="md"
             className="shadow-md"
           >
-            {siteConfig.cta.primary.label}
+            {t.actions.requestQuote}
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
           </CtaLink>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={open}
-          className={cn(
-            "inline-flex size-11 items-center justify-center rounded-lg transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 lg:hidden",
-            solid
-              ? "text-white hover:bg-white/10"
-              : "text-foreground hover:bg-foreground/5"
-          )}
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        {/* Mobile : bascule de langue + ouverture du menu */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <LangToggle solid={solid} />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? t.a11y.closeMenu : t.a11y.openMenu}
+            aria-expanded={open}
+            className={cn(
+              "inline-flex size-11 items-center justify-center rounded-lg transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+              solid
+                ? "text-white hover:bg-white/10"
+                : "text-foreground hover:bg-foreground/5"
+            )}
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile panel */}
@@ -115,7 +122,7 @@ export function Navbar() {
               onClick={() => setOpen(false)}
               className="rounded-lg px-3 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
             >
-              {item.label}
+              {t.nav[item.key]}
             </a>
           ))}
           <CtaLink
@@ -124,7 +131,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="mt-2 w-full"
           >
-            {siteConfig.cta.primary.label}
+            {t.actions.requestQuote}
             <ArrowRight className="size-4" />
           </CtaLink>
         </div>
