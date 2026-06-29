@@ -42,8 +42,9 @@ export function Navbar() {
     };
   }, [open]);
 
-  // Hero clair : au sommet la barre est transparente et le logo/liens passent
-  // en navy ; au scroll (ou menu ouvert) la barre devient navy glassy → blanc.
+  // Barre toujours claire (texte navy) ; au sommet elle est translucide, au
+  // scroll (ou menu ouvert) elle passe en blanc givré plus opaque + ombre fine
+  // pour se détacher du contenu.
   const solid = scrolled || open;
 
   return (
@@ -51,17 +52,14 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         solid
-          ? "border-b border-white/10 bg-ink/85 backdrop-blur-xl"
+          ? "border-b border-border bg-white/80 shadow-sm shadow-foreground/5 backdrop-blur-xl"
           : "border-b border-border/40 bg-white/40 backdrop-blur-md"
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <a
           href="#top"
-          className={cn(
-            "transition-colors",
-            solid ? "text-white" : "text-foreground"
-          )}
+          className="text-foreground transition-colors"
           aria-label={t.a11y.home}
         >
           <Logo />
@@ -79,23 +77,16 @@ export function Navbar() {
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong",
-                  solid
-                    ? isActive
-                      ? "text-white"
-                      : "text-white/70 hover:bg-white/10 hover:text-white"
-                    : isActive
-                      ? "text-foreground"
-                      : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
+                  isActive
+                    ? "text-foreground"
+                    : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
                 )}
               >
                 {t.nav[item.key]}
                 {isActive && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className={cn(
-                      "absolute inset-x-3 bottom-1 h-0.5 rounded-full",
-                      solid ? "bg-brand" : "bg-brand-strong"
-                    )}
+                    className="absolute inset-x-3 bottom-1 h-0.5 rounded-full bg-brand-strong"
                     transition={
                       reduce
                         ? { duration: 0 }
@@ -109,7 +100,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <LangToggle solid={solid} />
+          <LangToggle />
           <CtaLink
             href={siteConfig.cta.primary.href}
             size="md"
@@ -122,18 +113,13 @@ export function Navbar() {
 
         {/* Mobile : bascule de langue + ouverture du menu */}
         <div className="flex items-center gap-2 lg:hidden">
-          <LangToggle solid={solid} />
+          <LangToggle />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? t.a11y.closeMenu : t.a11y.openMenu}
             aria-expanded={open}
-            className={cn(
-              "inline-flex size-11 items-center justify-center rounded-lg transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong",
-              solid
-                ? "text-white hover:bg-white/10"
-                : "text-foreground hover:bg-foreground/5"
-            )}
+            className="inline-flex size-11 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-foreground/5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong"
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
@@ -145,7 +131,7 @@ export function Navbar() {
       <div
         inert={!open}
         className={cn(
-          "lg:hidden overflow-hidden border-t border-white/10 bg-ink/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 ease-out",
+          "lg:hidden overflow-hidden border-t border-border bg-white/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 ease-out",
           open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         )}
       >
@@ -163,8 +149,8 @@ export function Navbar() {
                 className={cn(
                   "rounded-lg px-3 py-3 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong",
                   isActive
-                    ? "bg-white/10 text-brand"
-                    : "text-white hover:bg-white/10"
+                    ? "bg-brand/10 text-brand-strong"
+                    : "text-foreground hover:bg-foreground/5"
                 )}
               >
                 {t.nav[item.key]}
