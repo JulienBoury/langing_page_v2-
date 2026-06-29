@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  Camera,
-  Wand2,
-  ShieldCheck,
-  MousePointerClick,
+  Presentation,
+  ListChecks,
+  Lightbulb,
+  Zap,
   Headphones,
-  BarChart3,
+  Handshake,
   type LucideIcon,
 } from "lucide-react";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
@@ -14,13 +14,15 @@ import { useT } from "@/lib/i18n";
 import { Eyebrow } from "./eyebrow";
 
 // Icônes des fonctionnalités (le texte vient du dictionnaire i18n, par index).
+// Ordre = vignettes « produit » : photos/diapos, quiz, take home message,
+// publication express, audio & multilingue, valorisation des sponsors.
 const featureIcons: LucideIcon[] = [
-  Camera,
-  Wand2,
-  ShieldCheck,
-  MousePointerClick,
+  Presentation,
+  ListChecks,
+  Lightbulb,
+  Zap,
   Headphones,
-  BarChart3,
+  Handshake,
 ];
 
 export function Features() {

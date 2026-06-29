@@ -108,7 +108,7 @@ const fr: Dictionary = {
     languageSwitcher: "Choisir la langue",
   },
   hero: {
-    badge: "Pour les sociétés savantes & congrès médicaux",
+    badge: "Pour les congrès & sociétés savantes",
     headline: [
       { t: "Valorisons" },
       { t: "votre" },
@@ -188,24 +188,24 @@ const fr: Dictionary = {
       "AgoraLive prolonge la vie de vos conférences et en fait un capital scientifique durable pour votre communauté.",
     items: [
       {
-        title: "Captation clé en main",
+        title: "Photos & diapositives clés",
         description:
-          "Notre équipe se déplace sur votre congrès et capte les sessions. Vous ne préparez rien : on s'occupe de tout, de bout en bout.",
+          "Les visuels marquants de chaque session : photos des intervenants et diapositives essentielles, intégrées au fil de l'article.",
       },
       {
-        title: "Rédaction scientifique assistée",
+        title: "Quiz pour ancrer le savoir",
         description:
-          "Notre moteur transforme la captation en article structuré, relu par nos équipes.",
+          "Des quiz en lien avec l'article invitent le lecteur à se tester et fixent durablement les messages clés de la conférence.",
       },
       {
-        title: "Vérifié par la littérature",
+        title: "Take home message",
         description:
-          "Chaque affirmation clé est croisée avec la littérature (PubMed) et accompagnée de ses références cliquables. La rigueur scientifique, par défaut.",
+          "Un document de synthèse unique qui rassemble l'essentiel de tous les articles du congrès : toute la connaissance partagée, condensée en une seule référence.",
       },
       {
-        title: "Articles web interactifs",
+        title: "Publié en quelques minutes",
         description:
-          "Photos et diapositives clés des intervenants, et des quiz en lien avec l'article pour ancrer les connaissances. Loin du PDF figé que personne n'ouvre.",
+          "L'article est disponible quelques minutes après la fin de chaque conférence : votre communauté lit pendant que le congrès vit encore.",
       },
       {
         title: "Audio & multilingue",
@@ -213,9 +213,9 @@ const fr: Dictionary = {
           "Chaque article est aussi publié en version audio et traduit dans toutes les langues, pour une audience plus large, partout.",
       },
       {
-        title: "Diffusion & audience mesurée",
+        title: "Vos sponsors mis en valeur",
         description:
-          "Optimisés pour le SEO et le partage, vos articles touchent votre communauté. Et vous savez précisément qui lit, quoi, et combien de temps.",
+          "Nous rédigeons aussi des articles sponsorisés sur-mesure pour mettre en avant les partenaires de votre congrès : une nouvelle façon de valoriser vos sponsors.",
       },
     ],
   },
@@ -325,7 +325,7 @@ const en: Dictionary = {
     languageSwitcher: "Choose language",
   },
   hero: {
-    badge: "For learned societies & medical congresses",
+    badge: "For congresses & learned societies",
     headline: [
       { t: "Showcase" },
       { t: "your" },
@@ -404,24 +404,24 @@ const en: Dictionary = {
       "AgoraLive extends the life of your talks and turns them into lasting scientific capital for your community.",
     items: [
       {
-        title: "Turnkey capture",
+        title: "Key photos & slides",
         description:
-          "Our team comes to your congress and captures the sessions. You prepare nothing: we handle everything, end to end.",
+          "The standout visuals from every session: speaker photos and the essential slides, woven right into the article.",
       },
       {
-        title: "Assisted scientific writing",
+        title: "Quizzes that lock in knowledge",
         description:
-          "Our engine turns the capture into a structured article, reviewed by our team.",
+          "Quizzes tied to the article invite readers to test themselves and make the talk's key messages stick for good.",
       },
       {
-        title: "Verified against the literature",
+        title: "Take-home message",
         description:
-          "Every key claim is cross-checked against the literature (PubMed) and backed by clickable references. Scientific rigor, by default.",
+          "A single summary document that brings together the essence of every article from the congress: all the knowledge shared, condensed into one reference to keep.",
       },
       {
-        title: "Interactive web articles",
+        title: "Live within minutes",
         description:
-          "Speakers' photos and key slides, plus quizzes tied to the article to lock in what was learned. A world away from the static PDF no one opens.",
+          "The article is available a few minutes after each talk ends: your community reads while the congress is still happening.",
       },
       {
         title: "Audio & multilingual",
@@ -429,9 +429,9 @@ const en: Dictionary = {
           "Every article is also published as an audio version and translated into any language, for a wider audience, everywhere.",
       },
       {
-        title: "Distribution & measured readership",
+        title: "Your sponsors, showcased",
         description:
-          "Optimized for SEO and sharing, your articles reach your community. And you know exactly who reads what, and for how long.",
+          "We also craft bespoke sponsored articles to spotlight your congress's partners: a new way to give your sponsors real value.",
       },
     ],
   },
