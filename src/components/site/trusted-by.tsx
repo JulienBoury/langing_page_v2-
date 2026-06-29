@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import orthoplus from "../../../public/logos/orthoplus.png";
 import dentalMonitoring from "../../../public/logos/dental-monitoring.png";
+import sfodf from "../../../public/logos/sfodf.png";
 
 // Congrès & partenaires ayant déjà valorisé leurs contenus avec AgoraLive.
 //  • image = logo officiel fourni (niveaux de gris au repos, couleur au survol)
@@ -19,7 +20,7 @@ const partners: Partner[] = [
     src: dentalMonitoring,
     heightClass: "h-[1.45rem]",
   },
-  { name: "SFODF", kind: "text" },
+  { name: "SFODF", kind: "image", src: sfodf, heightClass: "h-12" },
   { name: "SFOPA", kind: "text" },
 ];
 
