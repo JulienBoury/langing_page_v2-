@@ -17,7 +17,10 @@ export function Footer() {
             {t.footer.tagline}
           </p>
           <div className="mt-6 flex items-center gap-3">
-            <SocialLink href="#" label="LinkedIn">
+            <SocialLink
+              href="https://www.linkedin.com/company/agoralive/"
+              label="LinkedIn"
+            >
               <IconLinkedin className="size-[18px]" />
             </SocialLink>
             <SocialLink href="#" label="YouTube">
@@ -48,10 +51,15 @@ function SocialLink({
   label: string;
   children: React.ReactNode;
 }) {
+  // Les liens externes (réseaux sociaux) s'ouvrent dans un nouvel onglet ;
+  // mailto/ancres restent dans l'onglet courant.
+  const isExternal = href.startsWith("http");
   return (
     <a
       href={href}
       aria-label={label}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className="inline-flex size-11 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-muted hover:text-foreground active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       {children}

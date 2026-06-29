@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";
+import { useScrollSpy } from "@/lib/use-scroll-spy";
 import { useT } from "@/lib/i18n";
 import { Logo } from "./logo";
 import { CtaLink } from "./cta-button";
@@ -11,8 +13,19 @@ import { LangToggle } from "./lang-toggle";
 
 export function Navbar() {
   const t = useT();
+  const reduce = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // Scroll-spy : ids des sections internes (on ignore les liens externes).
+  const spyIds = useMemo(
+    () =>
+      siteConfig.nav
+        .filter((i) => i.href.startsWith("#"))
+        .map((i) => i.href.slice(1)),
+    []
+  );
+  const activeId = useScrollSpy(spyIds);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -55,22 +68,44 @@ export function Navbar() {
         </a>
 
         <div className="hidden items-center gap-1 lg:flex">
-          {siteConfig.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className={cn(
-                "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                solid
-                  ? "text-white hover:bg-white/10"
-                  : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
-              )}
-            >
-              {t.nav[item.key]}
-            </a>
-          ))}
+          {siteConfig.nav.map((item) => {
+            const isActive = item.href === `#${activeId}`;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+                  solid
+                    ? isActive
+                      ? "text-white"
+                      : "text-white/70 hover:bg-white/10 hover:text-white"
+                    : isActive
+                      ? "text-foreground"
+                      : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
+                )}
+              >
+                {t.nav[item.key]}
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className={cn(
+                      "absolute inset-x-3 bottom-1 h-0.5 rounded-full",
+                      solid ? "bg-brand" : "bg-brand-strong"
+                    )}
+                    transition={
+                      reduce
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 400, damping: 34 }
+                    }
+                  />
+                )}
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden items-center gap-2 lg:flex">
@@ -113,18 +148,27 @@ export function Navbar() {
         )}
       >
         <div className="flex flex-col gap-1 px-4 py-4">
-          {siteConfig.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
-            >
-              {t.nav[item.key]}
-            </a>
-          ))}
+          {siteConfig.nav.map((item) => {
+            const isActive = item.href === `#${activeId}`;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                onClick={() => setOpen(false)}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "rounded-lg px-3 py-3 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+                  isActive
+                    ? "bg-white/10 text-brand"
+                    : "text-white hover:bg-white/10"
+                )}
+              >
+                {t.nav[item.key]}
+              </a>
+            );
+          })}
           <CtaLink
             href={siteConfig.cta.primary.href}
             size="lg"

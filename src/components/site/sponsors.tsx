@@ -9,10 +9,14 @@ import {
   FileText,
   ArrowUpRight,
 } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/motion/reveal";
 import { useT } from "@/lib/i18n";
 import { Eyebrow } from "./eyebrow";
 import { CtaLink } from "./cta-button";
+
+// Hauteurs relatives des barres du mini-graphique « Lectures / jour ».
+const CHART_BARS = [35, 48, 42, 61, 55, 72, 68, 84, 79, 92, 88, 100];
 
 // Lien vers l'article sponsorisé exemple (fichier statique de /public).
 // On préfixe à la main le basePath car il n'est pas appliqué aux <a> ni aux
@@ -21,6 +25,7 @@ const sponsoredExampleHref = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/exemple
 
 export function Sponsors() {
   const t = useT();
+  const reduce = useReducedMotion();
   return (
     <section id="sponsors" className="surface-soft relative scroll-mt-20 overflow-hidden py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -117,15 +122,25 @@ export function Sponsors() {
               {/* Mini graphique */}
               <div className="mt-6 rounded-2xl border border-border bg-muted/40 p-4">
                 <div className="flex items-end gap-1.5">
-                  {[35, 48, 42, 61, 55, 72, 68, 84, 79, 92, 88, 100].map(
-                    (h, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 rounded-t bg-gradient-to-t from-brand/40 to-brand-accent"
-                        style={{ height: `${h * 0.9 + 10}px` }}
-                      />
-                    )
-                  )}
+                  {CHART_BARS.map((h, i) => (
+                    <motion.div
+                      key={i}
+                      className="flex-1 origin-bottom rounded-t bg-gradient-to-t from-brand/40 to-brand-accent"
+                      style={{ height: `${h * 0.9 + 10}px` }}
+                      initial={reduce ? { scaleY: 1 } : { scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={
+                        reduce
+                          ? { duration: 0 }
+                          : {
+                              duration: 0.5,
+                              delay: i * 0.045,
+                              ease: [0.22, 0.61, 0.36, 1],
+                            }
+                      }
+                    />
+                  ))}
                 </div>
                 <div className="mt-3 flex items-center justify-between text-xs text-muted-foreground">
                   <span className="label-mono text-[10px]">

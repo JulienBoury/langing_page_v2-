@@ -319,7 +319,7 @@ const en: Dictionary = {
   actions: { requestQuote: "Request a quote", seeExample: "See an example" },
   a11y: {
     skipToContent: "Skip to content",
-    home: "AgoraLive — home",
+    home: "AgoraLive home",
     openMenu: "Open menu",
     closeMenu: "Close menu",
     languageSwitcher: "Choose language",
@@ -335,7 +335,7 @@ const en: Dictionary = {
       { t: "sponsors", grad: true },
     ],
     subhead:
-      "Our team captures the talks at your congresses and turns them into scientific articles — interactive, translated into every language, and available as audio — distributed live to all your attendees.",
+      "Our team captures the talks at your congresses and turns them into interactive scientific articles, translated into every language and available as audio, distributed live to all your attendees.",
     trust: {
       pubmed: "Verified against the literature (PubMed)",
       audio: "Translated & audio version",
@@ -393,7 +393,7 @@ const en: Dictionary = {
       {
         title: "We publish & distribute",
         description:
-          "The article goes live — translated into every language and as an audio version — distributed to your community, with readership measured in real time.",
+          "The article goes live, translated into every language and as an audio version, then distributed to your community with readership measured in real time.",
       },
     ],
   },
@@ -513,11 +513,11 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "Your congresses, transformed into interactive scientific articles — verified, translated, and available in audio.",
+      "Your congresses, transformed into interactive scientific articles that are verified, translated, and available in audio.",
     rights: "© 2026 AgoraLive. All rights reserved.",
   },
   meta: {
-    title: "AgoraLive — Your congresses, transformed into scientific web articles",
+    title: "AgoraLive: Your congresses, transformed into scientific web articles",
     description:
       "AgoraLive turns your congress talks into interactive scientific web articles, verified against the literature and distributed to your medical community.",
   },
