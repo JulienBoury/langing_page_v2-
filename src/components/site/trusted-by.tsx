@@ -2,30 +2,53 @@ import Image, { type StaticImageData } from "next/image";
 import orthoplus from "../../../public/logos/orthoplus.png";
 import dentalMonitoring from "../../../public/logos/dental-monitoring.png";
 import sfodf from "../../../public/logos/sfodf.png";
+import gc from "../../../public/logos/gc.png";
 
 // Congrès & partenaires ayant déjà valorisé leurs contenus avec AgoraLive.
-//  • image = logo officiel fourni (niveaux de gris au repos, couleur au survol)
+//  • image = logo officiel, en COULEURS D'ORIGINE
 //  • text  = wordmark de secours tant qu'on n'a pas le fichier logo officiel
-// `heightClass` est dosé par logo pour un équilibre optique (les ratios diffèrent).
+// `heightClass` est dosé par logo (ratios très différents) pour un équilibre optique.
 type Partner =
   | { name: string; kind: "image"; src: StaticImageData; heightClass: string }
   | { name: string; kind: "text" };
 
 const partners: Partner[] = [
-  { name: "Top Ortho", kind: "text" },
-  { name: "OrthoPlus", kind: "image", src: orthoplus, heightClass: "h-10" },
+  { name: "OrthoPlus", kind: "image", src: orthoplus, heightClass: "h-9" },
   {
     name: "Dental Monitoring",
     kind: "image",
     src: dentalMonitoring,
-    heightClass: "h-[1.45rem]",
+    heightClass: "h-[1.4rem]",
   },
-  { name: "SFODF", kind: "image", src: sfodf, heightClass: "h-12" },
+  { name: "SFODF", kind: "image", src: sfodf, heightClass: "h-11" },
+  { name: "GC", kind: "image", src: gc, heightClass: "h-7" },
   { name: "SFOPA", kind: "text" },
 ];
 
-const wordmark =
-  "whitespace-nowrap font-heading text-xl font-semibold tracking-tight";
+/**
+ * Un groupe = la liste répétée assez de fois pour dépasser la largeur de
+ * l'écran. La piste contient 2 groupes identiques et l'animation translate de
+ * -50 % → boucle infinie sans couture (le `pr` final = l'espace entre groupes).
+ */
+function LogoGroup() {
+  return (
+    <ul className="flex shrink-0 items-center gap-14 pr-14 sm:gap-20 sm:pr-20">
+      {Array.from({ length: 4 }).flatMap((_, rep) =>
+        partners.map((p, i) => (
+          <li key={`${rep}-${i}`} className="flex items-center">
+            {p.kind === "image" ? (
+              <Image src={p.src} alt="" className={`${p.heightClass} w-auto`} />
+            ) : (
+              <span className="whitespace-nowrap font-heading text-xl font-semibold tracking-tight text-foreground">
+                {p.name}
+              </span>
+            )}
+          </li>
+        ))
+      )}
+    </ul>
+  );
+}
 
 export function TrustedBy() {
   return (
@@ -34,27 +57,22 @@ export function TrustedBy() {
         <p className="text-center text-sm font-medium text-muted-foreground">
           Ils valorisent déjà les contenus de leurs congrès avec AgoraLive
         </p>
+      </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16">
-          {partners.map((p) =>
-            p.kind === "image" ? (
-              <div key={p.name} className="group flex items-center">
-                <Image
-                  src={p.src}
-                  alt={p.name}
-                  className={`${p.heightClass} w-auto opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0`}
-                />
-              </div>
-            ) : (
-              <div key={p.name} className="flex items-center">
-                <span
-                  className={`${wordmark} select-none text-muted-foreground transition-colors duration-300 hover:text-foreground`}
-                >
-                  {p.name}
-                </span>
-              </div>
-            )
-          )}
+      {/* Noms des partenaires pour les lecteurs d'écran (le marquee est décoratif). */}
+      <ul className="sr-only">
+        {partners.map((p) => (
+          <li key={p.name}>{p.name}</li>
+        ))}
+      </ul>
+
+      <div
+        aria-hidden="true"
+        className="relative mt-10 overflow-hidden mask-fade-x"
+      >
+        <div className="flex w-max motion-safe:animate-marquee-slow hover:[animation-play-state:paused]">
+          <LogoGroup />
+          <LogoGroup />
         </div>
       </div>
     </section>
